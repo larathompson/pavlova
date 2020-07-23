@@ -1,4 +1,4 @@
-from app import db, ma
+from app import db, ma, bcrypt
 from models.base import BaseModel, BaseSchema
 from sqlalchemy.ext.hybrid import hybrid_property
 from marshmallow import fields, validates_schema, ValidationError, post_dump
@@ -39,12 +39,44 @@ class User(db.Model, BaseModel):
   
   def generate_token(self):
     payload = {
-      
+      'exp': datetime.utcnow() + timedelta(days=7),
+      'iat' : datetime.utcnow(),
+      'sub' : self.id
+
     }
 
+    token = jwt.encode(
+      payload,
+      secret,
+      'HS256'
+    ).decode('utf-8')
+
+    return token
+
+  
   
 
-class UserScema(ma.SQLAlchemyAutoSchema, BaseSchema):
+class UserSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
+
+  @validates_schema
+  def check_passwords_match(self, data, **kwargs):
+    if data['password'] != data['password_confirmation']:
+      raise ValidationError(
+        'Passwords do not match',
+        'password_confirmation'
+      )
+
+  password = fields.String(required=True)
+  password_confirmation = fields.String(required = True)
+  likes = fields.Nested('LikesSchema', many=True)
+  dislikes = fields.Nested('DislikesSchema', many=True)
+  matches = fields.Nested('MathcesSchema', many=True)
+
+  class Meta:
+    model = User
+    load_instance = True
+    exclude = ('password_hash',)
+    load_only = ('email', 'password')
 
 
   
