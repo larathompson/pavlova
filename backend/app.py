@@ -17,3 +17,6 @@ ma = Marshmallow(app)
 def home():
   return 'Hello World!', 200
 
+from controllers import users
+app.register_blueprint(users.router, url_prefix="/api")
+
