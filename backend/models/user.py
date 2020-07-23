@@ -11,19 +11,19 @@ class User(db.Model):
   __tablename__ = 'users'
 
   id = db.Column(db.Integer, primary_key=True)
-  email = db.Column(db.String(128), nullable=True, unique=True)
-  first_name = db.Column(db.String(128), nullable=True, unique=True)
-  last_name = db.Column(db.String(128), nullable=True, unique=True)
-  password_hash = db.Column(db.String(128), nullable=True)
-  age = db.Column(db.Integer(), nullable=True)
+  email = db.Column(db.String(128), nullable=False, unique=True)
+  first_name = db.Column(db.String(128), nullable=False, unique=True)
+  last_name = db.Column(db.String(128), nullable=False, unique=True)
+  password_hash = db.Column(db.String(128), nullable=False)
+  dob = db.Column(db.Integer(), nullable=False)
   age_pref_min = db.Column(db.Integer(), nullable=True)
   age_pref_max = db.Column(db.Integer, nullable=True)
   gender = db.Column(db.String(6), nullable=True)
   gender_pref = db.Column(db.String(128), nullable=True)
-  #location_longitude = db.Column(db.Float(20), nullable=False)
-  #location_latitude = db.Column(db.Float(20), nullable=False)
-  #location_longitude_pref = db.Column(db.Float(20), nullable=False)
-  #location_latitude_pref = db.Column(db.Float(20), nullable=False)
+  location_longitude = db.Column(db.Float(20), nullable=True)
+  location_latitude = db.Column(db.Float(20), nullable=True)
+  location_longitude_pref = db.Column(db.Float(20), nullable=True)
+  location_latitude_pref = db.Column(db.Float(20), nullable=True)
   bio = db.Column(db.String(500), nullable=True, unique=True)
 
 
@@ -72,7 +72,7 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
       )
 
   password = fields.String(required=True)
-  password_confirmation = fields.String(required = True)
+  password_confirmation = fields.String(required=True)
   #likes = fields.Nested('LikesSchema', many=True)
   #dislikes = fields.Nested('DislikesSchema', many=True)
   #matches = fields.Nested('MathcesSchema', many=True)
