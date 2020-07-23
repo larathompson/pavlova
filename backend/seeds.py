@@ -20,6 +20,14 @@ shaikh=User(
 	password="shaikh"
 )
 
+ali=User(
+  email="ali@ali.com",
+	first_name="ali",
+	last_name="ali",
+	password="ali"
+)
+
 db.session.add(lara)
 db.session.add(shaikh)
+db.session.add(ali)
 db.session.commit()
