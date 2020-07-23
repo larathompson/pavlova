@@ -1,16 +1,15 @@
 from app import db, ma, bcrypt
-#from models.base import BaseModel, BaseSchema
+from models.base import BaseModel, BaseSchema
 from sqlalchemy.ext.hybrid import hybrid_property
 from marshmallow import fields, validates_schema, ValidationError
 from datetime import *
 from environment.config import secret
 import jwt
 
-class User(db.Model):
+class User(db.Model, BaseModel):
 
   __tablename__ = 'users'
 
-  id = db.Column(db.Integer, primary_key=True)
   email = db.Column(db.String(128), nullable=False, unique=True)
   first_name = db.Column(db.String(128), nullable=False, unique=True)
   last_name = db.Column(db.String(128), nullable=False, unique=True)
@@ -61,7 +60,7 @@ class User(db.Model):
   
   
 
-class UserSchema(ma.SQLAlchemyAutoSchema):
+class UserSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
 
   @validates_schema
   def check_passwords_match(self, data, **kwargs):
