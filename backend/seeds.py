@@ -14,5 +14,25 @@ lara=User(
 
 )
 
+ali=User(
+  email="ali@ali.com",
+	first_name="ali",
+	last_name="ali",
+	password="ali",
+	
+
+)
+
+shaikh=User(
+  email="shaikh@shaikh.com",
+	first_name="shaikh",
+	last_name="shaikh",
+	password="shaikh",
+	
+
+)
+
 db.session.add(lara)
+db.session.add(ali)
+db.session.add(shaikh)
 db.session.commit()

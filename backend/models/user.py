@@ -15,7 +15,7 @@ class User(db.Model):
   first_name = db.Column(db.String(128), nullable=False, unique=True)
   last_name = db.Column(db.String(128), nullable=False, unique=True)
   password_hash = db.Column(db.String(128), nullable=False)
-  dob = db.Column(db.Integer(), nullable=False)
+  dob = db.Column(db.Integer(), nullable=True)
   age_pref_min = db.Column(db.Integer(), nullable=True)
   age_pref_max = db.Column(db.Integer, nullable=True)
   gender = db.Column(db.String(6), nullable=True)
