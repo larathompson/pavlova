@@ -5,27 +5,26 @@ from marshmallow import fields, validates_schema, ValidationError
 from datetime import *
 from environment.config import secret
 import jwt
-from models.likes import Likes, LikesSchema
-from models.dislikes import Dislikes, DislikesSchema
-from models.matches import Matches, MatchesSchema
-
+from models.likes import Like, LikeSchema
+from models.dislikes import Dislike, DislikeSchema
 from sqlalchemy.ext.declarative import declarative_base
+from flask import request
 
 Base = declarative_base()
 
-likes_table = db.Table('likes_table',
-   db.Column('like_id', db.Integer, db.ForeignKey('likes.id'), primary_key=True),
-   db.Column('liked_by_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-   db.Column('likee_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-)
+# likes_table = db.Table('likes_table',
+#    db.Column('like_id', db.Integer, db.ForeignKey('likes.id'), primary_key=True),
+#    db.Column('liked_by_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+#    db.Column('likee_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+# )
 
 
 
-dislikes_table = db.Table('dislikes_table',
-   db.Column('dislike_id', db.Integer, db.ForeignKey('dislikes.id'), primary_key=True),
-   db.Column('disliked_by_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-   db.Column('dislikee_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-)
+# dislikes_table = db.Table('dislikes_table',
+#    db.Column('dislike_id', db.Integer, db.ForeignKey('dislikes.id'), primary_key=True),
+#    db.Column('disliked_by_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+#    db.Column('dislikee_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+# )
 
 matches_table = db.Table('matches_table',
   db.Column('id', db.Integer, db.ForeignKey('matches.id'), primary_key=True),
@@ -54,10 +53,11 @@ class User(db.Model, BaseModel, Base):
   location_longitude_pref = db.Column(db.Float(20), nullable=True)
   location_latitude_pref = db.Column(db.Float(20), nullable=True)
   bio = db.Column(db.String(500), nullable=True, unique=True)
-  likes = db.relationship('Likes', secondary=likes_table, primaryjoin="User.id==likes_table.c.liked_by_id", secondaryjoin="User.id==likes_table.c.likee_id", backref='users')
-  dislikes = db.relationship('Dislikes', secondary=dislikes_table, primaryjoin="User.id==dislikes_table.c.disliked_by_id", secondaryjoin="User.id==dislikes_table.c.dislikee_id", backref='users')
-  matches = db.relationship('Matches', secondary=matches_table, primaryjoin="User.id==matches_table.c.user_1_id", secondaryjoin="User.id==matches_table.c.user_2_id", backref='users')
-  
+  # like = db.relationship('Like', secondary=like, primaryjoin="User.id==likes_table.c.liked_by_id", secondaryjoin="User.id==likes_table.c.likee_id", backref='users')
+  # dislike = db.relationship('Dislike', secondary=dislike, primaryjoin="User.id==dislikes_table.c.disliked_by_id", secondaryjoin="User.id==dislikes_table.c.dislikee_id", backref='users')
+  like = db.relationship('Like', backref='users')
+  dislike = db.relationship('Dislike', backref='users')
+  # match = db.relationship('Match', secondary=users_match, backref='users')
 
 
 
@@ -118,17 +118,18 @@ class UserSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
 
   @validates_schema
   def check_passwords_match(self, data, **kwargs):
-    if data['password'] != data['password_confirmation']:
-      raise ValidationError(
-        'Passwords do not match',
-        'password_confirmation'
-      )
+    if request.method == 'POST':
+      if data['password'] != data['password_confirmation']:
+        raise ValidationError(
+          'Passwords do not match',
+          'password_confirmation'
+        )
 
-  password = fields.String(required=True)
-  password_confirmation = fields.String(required=True)
-  likes = fields.Nested('LikesSchema', many=True)
-  dislikes = fields.Nested('DislikesSchema', many=True)
-  matches = fields.Nested('MatchesSchema', many=True)
+  password = fields.String(required=False)
+  password_confirmation = fields.String(required=False)
+  # like = fields.Nested('LikeSchema', many=True)
+  # dislikes = fields.Nested('DislikeSchema', many=True)
+  # matches = fields.Nested('MatchesSchema', many=True)
 
   class Meta:
     model = User
@@ -136,10 +137,9 @@ class UserSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
     exclude = ('password_hash',)
     load_only = ('email', 'password')
 
-likes = fields.Nested('LikesSchema', many=True)
-dislikes = fields.Nested('DislikesSchema', many=True)
-images = fields.Nested('ImagesSchema', many=True)
-matches = fields.Nested('MatchesSchema', many=True)
+# likes = fields.Nested('LikesSchema', many=True)
+# dislikes = fields.Nested('DislikesSchema', many=True)
+# images = fields.Nested('ImagesSchema', many=True)
 #user = fields.Nested('UserSchema', only='id',)
 
 

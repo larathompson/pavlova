@@ -1,7 +1,7 @@
 from app import app, db
 from models.user import User
-from models.likes import Likes
-from models.dislikes import Dislikes
+from models.likes import Like
+from models.dislikes import Dislike
 
 with app.app_context():
   db.drop_all()
@@ -12,8 +12,6 @@ lara=User(
 	first_name="lara",
 	last_name="lara",
 	password="lara"
-  
-
 
 )
 
@@ -22,7 +20,6 @@ shaikh=User(
 	first_name="shaikh",
 	last_name="shaikh",
 	password="shaikh"
- 
 )
 
 ali=User(
@@ -30,7 +27,6 @@ ali=User(
 	first_name="ali",
 	last_name="ali",
 	password="ali"
-  
 )
 
 db.session.add(lara)
