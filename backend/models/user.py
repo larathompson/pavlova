@@ -7,6 +7,7 @@ from environment.config import secret
 import jwt
 from models.likes import Likes, LikesSchema
 from models.dislikes import Dislikes, DislikesSchema
+from models.matches import Matches, MatchesSchema
 
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -24,6 +25,12 @@ dislikes_table = db.Table('dislikes_table',
    db.Column('dislike_id', db.Integer, db.ForeignKey('dislikes.id'), primary_key=True),
    db.Column('disliked_by_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
    db.Column('dislikee_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+)
+
+matches_table = db.Table('matches_table',
+  db.Column('id', db.Integer, db.ForeignKey('matches.id'), primary_key=True),
+  db.Column('user_1_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+  db.Column('user_2_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
 )
 
 
@@ -49,7 +56,8 @@ class User(db.Model, BaseModel, Base):
   bio = db.Column(db.String(500), nullable=True, unique=True)
   likes = db.relationship('Likes', secondary=likes_table, primaryjoin="User.id==likes_table.c.liked_by_id", secondaryjoin="User.id==likes_table.c.likee_id", backref='users')
   dislikes = db.relationship('Dislikes', secondary=dislikes_table, primaryjoin="User.id==dislikes_table.c.disliked_by_id", secondaryjoin="User.id==dislikes_table.c.dislikee_id", backref='users')
-  #matched = db.relationship('Match', secondary=users_matched, backref='users')
+  matches = db.relationship('Matches', secondary=matches_table, primaryjoin="User.id==matches_table.c.user_1_id", secondaryjoin="User.id==matches_table.c.user_2_id", backref='users')
+  
 
 
 
@@ -131,6 +139,7 @@ class UserSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
 likes = fields.Nested('LikesSchema', many=True)
 dislikes = fields.Nested('DislikesSchema', many=True)
 images = fields.Nested('ImagesSchema', many=True)
+matches = fields.Nested('MatchesSchema', many=True)
 #user = fields.Nested('UserSchema', only='id',)
 
 
