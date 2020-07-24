@@ -24,6 +24,10 @@ class User(db.Model, BaseModel):
   location_longitude_pref = db.Column(db.Float(20), nullable=True)
   location_latitude_pref = db.Column(db.Float(20), nullable=True)
   bio = db.Column(db.String(500), nullable=True, unique=True)
+  liked = db.relationship('Like', secondary=users_liked, backref='users')
+  disliked = db.relationship('Dislike', secondary=users_disliked, backref='users')
+  matched = db.relationship('Match', secondary=users_matched, backref='users')
+
 
 
   def save(self):
@@ -72,9 +76,9 @@ class UserSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
 
   password = fields.String(required=True)
   password_confirmation = fields.String(required=True)
-  #likes = fields.Nested('LikesSchema', many=True)
-  #dislikes = fields.Nested('DislikesSchema', many=True)
-  #matches = fields.Nested('MathcesSchema', many=True)
+  liked = fields.Nested('LikeSchema', many=True)
+  disliked = fields.Nested('DislikeSchema', many=True)
+  matched = fields.Nested('MatchSchema', many=True)
 
   class Meta:
     model = User
