@@ -5,8 +5,31 @@ from marshmallow import fields, validates_schema, ValidationError
 from datetime import *
 from environment.config import secret
 import jwt
+from models.likes import Likes, LikesSchema
+from models.dislikes import Dislikes, DislikesSchema
 
-class User(db.Model, BaseModel):
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+likes_table = db.Table('likes_table',
+   db.Column('like_id', db.Integer, db.ForeignKey('likes.id'), primary_key=True),
+   db.Column('liked_by_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+   db.Column('likee_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+)
+
+
+
+dislikes_table = db.Table('dislikes_table',
+   db.Column('dislike_id', db.Integer, db.ForeignKey('dislikes.id'), primary_key=True),
+   db.Column('disliked_by_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+   db.Column('dislikee_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+)
+
+
+
+
+class User(db.Model, BaseModel, Base):
 
   __tablename__ = 'users'
 
@@ -24,9 +47,9 @@ class User(db.Model, BaseModel):
   location_longitude_pref = db.Column(db.Float(20), nullable=True)
   location_latitude_pref = db.Column(db.Float(20), nullable=True)
   bio = db.Column(db.String(500), nullable=True, unique=True)
-  # liked = db.relationship('Like', secondary=users_liked, backref='users')
-  # disliked = db.relationship('Dislike', secondary=users_disliked, backref='users')
-  # matched = db.relationship('Match', secondary=users_matched, backref='users')
+  likes = db.relationship('Likes', secondary=likes_table, primaryjoin="User.id==likes_table.c.liked_by_id", secondaryjoin="User.id==likes_table.c.likee_id", backref='users')
+  dislikes = db.relationship('Dislikes', secondary=dislikes_table, primaryjoin="User.id==dislikes_table.c.disliked_by_id", secondaryjoin="User.id==dislikes_table.c.dislikee_id", backref='users')
+  #matched = db.relationship('Match', secondary=users_matched, backref='users')
 
 
 
@@ -61,6 +84,25 @@ class User(db.Model, BaseModel):
 
     return token
 
+class Images(db.Model, BaseModel):
+
+  __tablename__= 'images'
+
+  image_1 = db.Column(db.String(300), nullable=False)
+  image_2 = db.Column(db.String(300), nullable=True)
+  image_3 = db.Column(db.String(300), nullable=True)
+  image_4 = db.Column(db.String(300), nullable=True)
+  image_5 = db.Column(db.String(300), nullable=True)
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+  user = db.relationship('User', backref='images')
+  
+class ImagesSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
+  class Meta:
+    model = Images
+    load_instance = True
+
+  
+
   
   
 
@@ -76,15 +118,20 @@ class UserSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
 
   password = fields.String(required=True)
   password_confirmation = fields.String(required=True)
-  liked = fields.Nested('LikeSchema', many=True)
-  disliked = fields.Nested('DislikeSchema', many=True)
-  matched = fields.Nested('MatchSchema', many=True)
+  likes = fields.Nested('LikesSchema', many=True)
+  dislikes = fields.Nested('DislikesSchema', many=True)
+  matches = fields.Nested('MatchesSchema', many=True)
 
   class Meta:
     model = User
     load_instance = True
     exclude = ('password_hash',)
     load_only = ('email', 'password')
+
+likes = fields.Nested('LikesSchema', many=True)
+dislikes = fields.Nested('DislikesSchema', many=True)
+images = fields.Nested('ImagesSchema', many=True)
+#user = fields.Nested('UserSchema', only='id',)
 
 
   

@@ -1,10 +1,13 @@
 from app import db, ma
-from models.base import BaseModel, BaseSchema
-from marshmallow import fields, post_load
-from models.user import User
+from models.base import BaseModel
+from marshmallow import fields
+#from models.user import User
 
-users_liked = db.Table('users_liked', 
-  user1=db.Column()
+class Likes(db.Model, BaseModel):
 
-)
+  __tablename__ = 'likes'
 
+class LikesSchema(ma.SQLAlchemyAutoSchema):
+  class Meta:
+    model = Likes
+    load_instance = True
