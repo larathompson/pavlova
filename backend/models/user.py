@@ -24,9 +24,9 @@ class User(db.Model, BaseModel):
   location_longitude_pref = db.Column(db.Float(20), nullable=True)
   location_latitude_pref = db.Column(db.Float(20), nullable=True)
   bio = db.Column(db.String(500), nullable=True, unique=True)
-  liked = db.relationship('Like', secondary=users_liked, backref='users')
-  disliked = db.relationship('Dislike', secondary=users_disliked, backref='users')
-  matched = db.relationship('Match', secondary=users_matched, backref='users')
+  # liked = db.relationship('Like', secondary=users_liked, backref='users')
+  # disliked = db.relationship('Dislike', secondary=users_disliked, backref='users')
+  # matched = db.relationship('Match', secondary=users_matched, backref='users')
 
 
 
