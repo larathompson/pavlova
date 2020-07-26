@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify, g
-from models.user import User, UserSchema
+from models.user import User
+from schemas.user import UserSchema
 from app import db
 from lib.secure_route import secure_route
 
