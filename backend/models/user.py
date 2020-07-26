@@ -7,10 +7,11 @@ from environment.config import secret
 import jwt
 from models.likes import Like, LikeSchema
 from models.dislikes import Dislike, DislikeSchema
-from sqlalchemy.ext.declarative import declarative_base
+from models.matches import Match, MatchSchema
+#from sqlalchemy.ext.declarative import declarative_base
 from flask import request
 
-Base = declarative_base()
+#Base = declarative_base()
 
 # likes_table = db.Table('likes_table',
 #    db.Column('like_id', db.Integer, db.ForeignKey('likes.id'), primary_key=True),
@@ -26,16 +27,16 @@ Base = declarative_base()
 #    db.Column('dislikee_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
 # )
 
-matches_table = db.Table('matches_table',
-  db.Column('id', db.Integer, db.ForeignKey('matches.id'), primary_key=True),
-  db.Column('user_1_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-  db.Column('user_2_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-)
+# matches_table = db.Table('matches_table',
+#   db.Column('id', db.Integer, db.ForeignKey('matches.id'), primary_key=True),
+#   db.Column('user_1_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+#   db.Column('user_2_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+# )
 
 
 
 
-class User(db.Model, BaseModel, Base):
+class User(db.Model, BaseModel):
 
   __tablename__ = 'users'
 
@@ -137,8 +138,8 @@ class UserSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
     exclude = ('password_hash',)
     load_only = ('email', 'password')
 
-# likes = fields.Nested('LikesSchema', many=True)
-# dislikes = fields.Nested('DislikesSchema', many=True)
+like = fields.Nested('LikeSchema', many=True)
+dislike = fields.Nested('DislikeSchema', many=True)
 # images = fields.Nested('ImagesSchema', many=True)
 #user = fields.Nested('UserSchema', only='id',)
 

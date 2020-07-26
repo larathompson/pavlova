@@ -2,6 +2,7 @@ from app import app, db
 from models.user import User
 from models.likes import Like
 from models.dislikes import Dislike
+from models.matches import Match
 
 with app.app_context():
   db.drop_all()
