@@ -30,8 +30,10 @@ def like():
   print('firstprint')
   like_data = request.get_json()
   print(like_data)
-  like = like_schema.load(like_data)
-  like_instance = Like(liker_id=like['liker_id'], liked_id=like['liked_id'])
+  like_instance = Like(
+    liker_id=like_data['liker_id'],
+    liked_id=like_data['liked_id']
+  )
   print(like_instance)
   print('2print')
   #like_data['id'] = g.current_user.id

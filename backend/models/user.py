@@ -40,6 +40,7 @@ class User(db.Model, BaseModel):
 
   __tablename__ = 'users'
 
+  id = db.Column(db.Integer, primary_key=True)
   email = db.Column(db.String(128), nullable=False, unique=True)
   first_name = db.Column(db.String(128), nullable=False, unique=True)
   last_name = db.Column(db.String(128), nullable=False, unique=True)
@@ -74,7 +75,7 @@ class User(db.Model, BaseModel):
 
   def validate_password(self, password_plaintext):
     return bcrypt.check_password_hash(self.password_hash, password_plaintext)
-  
+
   def generate_token(self):
     payload = {
       'exp': datetime.utcnow() + timedelta(days=7),
@@ -95,6 +96,7 @@ class Images(db.Model, BaseModel):
 
   __tablename__= 'images'
 
+  id = db.Column(db.Integer, primary_key=True)
   image_1 = db.Column(db.String(300), nullable=False)
   image_2 = db.Column(db.String(300), nullable=True)
   image_3 = db.Column(db.String(300), nullable=True)
@@ -108,11 +110,11 @@ class ImagesSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
     model = Images
     load_instance = True
 
-  
-
-  
-  
 
 
 
-  
+
+
+
+
+
