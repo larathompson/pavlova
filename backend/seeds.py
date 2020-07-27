@@ -46,10 +46,6 @@ dislike_1=Dislike(
   disliked_id=2
 )
 
-match_1=Match(
-  user_1_id=2,
-  user_2_id=1
-)
 
 # db.session.add(dislike_1)
 db.session.add(lara)
@@ -62,5 +58,3 @@ db.session.add(like_2)
 db.session.add(dislike_1)
 db.session.commit()
 
-db.session.add(match_1)
-db.session.commit()

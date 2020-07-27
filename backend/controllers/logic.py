@@ -3,16 +3,20 @@ from models.user import User
 from schemas.user import UserSchema
 from schemas.likes import LikeSchema
 from schemas.dislike import DislikeSchema
+from schemas.match import MatchSchema
 from app import db
 from lib.secure_route import secure_route
 from marshmallow import ValidationError
 from models.likes import Like
 from models.dislikes import Dislike
+from models.matches import Match
 
 
 user_schema = UserSchema()
 like_schema = LikeSchema()
 dislike_schema = DislikeSchema()
+match_schema = MatchSchema()
+
 
 # GET all users
 
@@ -35,22 +39,23 @@ def like():
     liked_id=like_data['liked_id']
   )
   like_instance.save()
-  # user_1_likers=Like.query.filter_by(liked_id=like_data['liked_id'])
-  likers_of_user=Like.query.filter_by(liked_id=g.current_user.id).all()
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
+  likers_of_user=Like.query.filter_by(liked_id=g.current_user.id, liker_id=like_data['liked_id']).first()
   print('')
+  print('*************')
   print('')
   print(likers_of_user)
+  print(type(likers_of_user))
+  print(likers_of_user.liked_id)
   print('')
+  print('*************')
   print('')
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
+
+  match = Match(
+    user_1_id=likers_of_user.liked_id,
+    user_2_id=likers_of_user.liker_id
+  )
+  match.save()
+  
   return like_schema.jsonify(like_data)
 
 @router.route('/dislikes', methods=['POST'])
