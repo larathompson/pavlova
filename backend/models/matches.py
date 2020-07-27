@@ -1,8 +1,13 @@
-# from app import db, ma
-# from models.base import BaseModel, BaseSchema
-# from marshmallow import fields, post_load
-# from models.user import User
+from app import db, ma
+from models.base import BaseModel
+from marshmallow import fields, post_load
 
-# class Match(db.Model, BaseModel):
-#   __tablename__ = 'matches'
+class Match(db.Model, BaseModel):
+  __tablename__ = 'matches'
+  id = db.Column(db.Integer, primary_key=True)
+  user_1_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+  user_2_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+  likes_relationship = db.relationship('User', foreign_keys=[user_1_id], backref='matches')
+
+
 

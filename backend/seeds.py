@@ -2,7 +2,7 @@ from app import app, db
 from models.user import User
 from models.likes import Like
 from models.dislikes import Dislike
-#from models.matches import Match
+from models.matches import Match
 
 with app.app_context():
   db.drop_all()
@@ -36,10 +36,21 @@ like_1=Like(
   liked_id=2
 )
 
+like_2=Like(
+  liker_id=3,
+  liked_id=2
+)
+
 dislike_1=Dislike(
   disliker_id=1,
   disliked_id=2
 )
+
+match_1=Match(
+  user_1_id=2,
+  user_2_id=1
+)
+
 # db.session.add(dislike_1)
 db.session.add(lara)
 db.session.add(shaikh)
@@ -47,6 +58,9 @@ db.session.add(ali)
 db.session.commit()
 
 db.session.add(like_1)
+db.session.add(like_2)
 db.session.add(dislike_1)
+db.session.commit()
 
+db.session.add(match_1)
 db.session.commit()
