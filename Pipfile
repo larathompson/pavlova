@@ -7,12 +7,12 @@ verify_ssl = true
 
 [packages]
 flask = "*"
-marshmallow-sqlalchemy = "*"
-flask-marshmallow = "*"
-pyjwt = "*"
-flask-bcrypt = "*"
-psycopg2-binary = "*"
 flask-sqlalchemy = "*"
+flask-marshmallow = "*"
+marshmallow-sqlalchemy = "*"
+psycopg2-binary = "*"
+flask-bcrypt = "*"
+pyjwt = "*"
 
 [requires]
-python_version = "3.8.3"
+python_version = "3.7"
