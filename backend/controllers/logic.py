@@ -26,20 +26,31 @@ def get_users():
   return user_schema.jsonify(users, many=True), 200
 
 
-@router.route('/likes', methods=['POST'])
+@router.route('/likes', methods=['GET', 'POST'])
 @secure_route
 def like():
-  print('firstprint')
   like_data = request.get_json()
-  print(like_data)
   like_instance = Like(
     liker_id=g.current_user.id,
     liked_id=like_data['liked_id']
   )
-  print(like_instance)
-  print('2print')
-  #like_data['id'] = g.current_user.id
   like_instance.save()
+  # user_1_likers=Like.query.filter_by(liked_id=like_data['liked_id'])
+  likers_of_user=Like.query.filter_by(liked_id=g.current_user.id).all()
+  print('USER 1 LIKERS')
+  print('USER 1 LIKERS')
+  print('USER 1 LIKERS')
+  print('USER 1 LIKERS')
+  print('USER 1 LIKERS')
+  print('')
+  print('')
+  print(likers_of_user)
+  print('')
+  print('')
+  print('USER 1 LIKERS')
+  print('USER 1 LIKERS')
+  print('USER 1 LIKERS')
+  print('USER 1 LIKERS')
   return like_schema.jsonify(like_data)
 
 @router.route('/dislikes', methods=['POST'])
