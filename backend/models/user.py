@@ -27,6 +27,12 @@ from flask import request
 #    db.Column('dislikee_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
 # )
 
+# matches_table = db.Table('matches_table',
+#   db.Column('id', db.Integer, db.ForeignKey('matches.id'), primary_key=True),
+#   db.Column('user_1_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+#   db.Column('user_2_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+# )
+
 
 
 
@@ -34,11 +40,12 @@ class User(db.Model, BaseModel):
 
   __tablename__ = 'users'
 
+  id = db.Column(db.Integer, primary_key=True)
   email = db.Column(db.String(128), nullable=False, unique=True)
   first_name = db.Column(db.String(128), nullable=False, unique=True)
   last_name = db.Column(db.String(128), nullable=False, unique=True)
   password_hash = db.Column(db.String(128), nullable=False)
-  dob = db.Column(db.Integer(), nullable=True)
+  dob = db.Column(db.DateTime(), nullable=True)
   age_pref_min = db.Column(db.Integer(), nullable=True)
   age_pref_max = db.Column(db.Integer, nullable=True)
   gender = db.Column(db.String(6), nullable=True)
@@ -68,7 +75,7 @@ class User(db.Model, BaseModel):
 
   def validate_password(self, password_plaintext):
     return bcrypt.check_password_hash(self.password_hash, password_plaintext)
-  
+
   def generate_token(self):
     payload = {
       'exp': datetime.utcnow() + timedelta(days=7),
@@ -89,6 +96,7 @@ class Images(db.Model, BaseModel):
 
   __tablename__= 'images'
 
+  id = db.Column(db.Integer, primary_key=True)
   image_1 = db.Column(db.String(300), nullable=False)
   image_2 = db.Column(db.String(300), nullable=True)
   image_3 = db.Column(db.String(300), nullable=True)
@@ -102,11 +110,11 @@ class ImagesSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
     model = Images
     load_instance = True
 
-  
-
-  
-  
 
 
 
-  
+
+
+
+
+

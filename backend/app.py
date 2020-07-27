@@ -19,6 +19,8 @@ bcrypt = Bcrypt(app)
 def home():
   return 'Hello World!', 200
 
-from controllers import users
+from controllers import users, logic
 app.register_blueprint(users.router, url_prefix="/api")
+app.register_blueprint(logic.router, url_prefix="/api")
+
 
