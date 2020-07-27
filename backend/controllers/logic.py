@@ -2,15 +2,17 @@ from flask import Blueprint, request, jsonify, g
 from models.user import User
 from schemas.user import UserSchema
 from schemas.likes import LikeSchema
+from schemas.dislike import DislikeSchema
 from app import db
 from lib.secure_route import secure_route
 from marshmallow import ValidationError
 from models.likes import Like
+from models.dislikes import Dislike
 
 
 user_schema = UserSchema()
 like_schema = LikeSchema()
-#dislike_schema = DislikeSchema()
+dislike_schema = DislikeSchema()
 
 # GET all users
 
@@ -31,7 +33,7 @@ def like():
   like_data = request.get_json()
   print(like_data)
   like_instance = Like(
-    liker_id=like_data['liker_id'],
+    liker_id=g.current_user.id,
     liked_id=like_data['liked_id']
   )
   print(like_instance)
@@ -40,14 +42,17 @@ def like():
   like_instance.save()
   return like_schema.jsonify(like_data)
 
-# @router.route('/likes', methods=['POST'])
-# @secure_route
-# def like():
-#   json_im_posting = request.get_json()
-#   json_im_posting['liker_id'] = g.current_user.id
-#   like = like_schema.load(json_im_posting)
-#   like.save()
-#   return like_schema.jsonify(like), 201
+@router.route('/dislikes', methods=['POST'])
+@secure_route
+def dislike():
+  dislike_data = request.get_json()
+  dislike_instance = Dislike(
+    disliker_id=g.current_user.id,
+    disliked_id=dislike_data['disliked_id']
+  )
+  print(dislike_instance)
+  dislike_instance.save()
+  return dislike_schema.jsonify(dislike_data)
 
 
 

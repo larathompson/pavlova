@@ -1,10 +1,12 @@
-# class MatchSchema(ma.SQLAlchemyAutoSchema):
-#   class Meta:
-#     model = Match
-#     load_instance = True
+from app import db, ma
+from schemas.base import BaseSchema
+from marshmallow import fields
+from models.matches import Match
 
-# matches_table = db.Table('matches_table',
-#   db.Column('id', db.Integer, db.ForeignKey('matches.id'), primary_key=True),
-#   db.Column('user_1_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-#   db.Column('user_2_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-# )
+class MatchSchema(ma.SQLAlchemyAutoSchema):
+  class Meta:
+    model = Match
+    load_instance = True
+
+
+likes_relationship = fields.Nested('LikeSchema', many=True)
