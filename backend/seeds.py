@@ -2,7 +2,7 @@ from app import app, db
 from models.user import User
 from models.likes import Like
 from models.dislikes import Dislike
-from models.matches import Match
+#from models.matches import Match
 
 with app.app_context():
   db.drop_all()
@@ -30,7 +30,22 @@ ali=User(
 	password="ali"
 )
 
-db.session.add(lara)
-db.session.add(shaikh)
-db.session.add(ali)
+like_1=Like(
+  id=1,
+  liker_id=1,
+  liked_id=2
+)
+
+dislike_1=Dislike(
+  id=1,
+  disliker_id=1,
+  disliked_id=2
+)
+db.session.add(dislike_1)
+db.session.add(like_1)
+# db.session.add(lara)
+# db.session.add(shaikh)
+# db.session.add(ali)
+#db.session.add(like_1)
+
 db.session.commit()

@@ -21,4 +21,6 @@ def home():
 
 from controllers import users, logic
 app.register_blueprint(users.router, url_prefix="/api")
+app.register_blueprint(logic.router, url_prefix="/api")
+
 
