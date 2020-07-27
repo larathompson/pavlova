@@ -1,7 +1,7 @@
 from app import db, ma
 from schemas.base import BaseSchema
 from marshmallow import fields, post_load
-from model.dislike import Dislike
+from models.dislikes import Dislike
 
 
 class DislikeSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
