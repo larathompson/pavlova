@@ -36,8 +36,11 @@ def like():
     liker_id=g.current_user.id,
     liked_id=like_data['liked_id']
   )
-  print(like_instance)
-  print('2print')
+
+  user_1_likers=Like.query.filter_by(liked_id=like_data['liked_id'])
+
+  print(users_1_likers)
+  
   #like_data['id'] = g.current_user.id
   like_instance.save()
   return like_schema.jsonify(like_data)
