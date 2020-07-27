@@ -34,9 +34,22 @@ def like():
     liker_id=g.current_user.id,
     liked_id=like_data['liked_id']
   )
+
+  
+  
+  #iterate over the pairs in this and if any of the pairs equals the like_instance , then it should be a match
+  #need to convert the dictioary (the json) into a list
+ 
+  
   like_instance.save()
-  # user_1_likers=Like.query.filter_by(liked_id=like_data['liked_id'])
-  likers_of_user=Like.query.filter_by(liked_id=g.current_user.id).all()
+  likers_of_user=Like.query.filter_by(liked_id=g.current_user.id, liker_id=like_data['liked_id']).first()
+
+  
+
+  
+
+  
+
   print('USER 1 LIKERS')
   print('USER 1 LIKERS')
   print('USER 1 LIKERS')
@@ -45,6 +58,8 @@ def like():
   print('')
   print('')
   print(likers_of_user)
+  #print(type(like_instance))
+  #print(type(like_instance))
   print('')
   print('')
   print('USER 1 LIKERS')
