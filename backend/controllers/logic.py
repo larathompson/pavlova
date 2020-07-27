@@ -3,29 +3,25 @@ from models.user import User
 from schemas.user import UserSchema
 from schemas.likes import LikeSchema
 from schemas.dislike import DislikeSchema
+from schemas.match import MatchSchema
 from app import db
 from lib.secure_route import secure_route
 from marshmallow import ValidationError
 from models.likes import Like
 from models.dislikes import Dislike
-
-
+from models.matches import Match
 user_schema = UserSchema()
 like_schema = LikeSchema()
 dislike_schema = DislikeSchema()
-
+match_schema = MatchSchema()
 # GET all users
-
 router = Blueprint(__name__, 'users')
-
 @router.route('/users', methods=['GET'])
 @secure_route
 def get_users():
   users = User.query.all()
   print('hello')
   return user_schema.jsonify(users, many=True), 200
-
-
 @router.route('/likes', methods=['GET', 'POST'])
 @secure_route
 def like():
@@ -34,41 +30,23 @@ def like():
     liker_id=g.current_user.id,
     liked_id=like_data['liked_id']
   )
-
-  
-  
-  #iterate over the pairs in this and if any of the pairs equals the like_instance , then it should be a match
-  #need to convert the dictioary (the json) into a list
- 
-  
   like_instance.save()
   likers_of_user=Like.query.filter_by(liked_id=g.current_user.id, liker_id=like_data['liked_id']).first()
-  
-
-  
-
-  
-
-  
-
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
   print('')
+  print('*************')
   print('')
   print(likers_of_user)
-  #print(type(like_instance))
-  #print(type(like_instance))
+  print(type(likers_of_user))
+  print(likers_of_user.liked_id)
   print('')
+  print('*************')
   print('')
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
-  print('USER 1 LIKERS')
+  match = Match(
+    user_1_id=likers_of_user.liked_id,
+    user_2_id=likers_of_user.liker_id
+  )
+  match.save()
   return like_schema.jsonify(like_data)
-
 @router.route('/dislikes', methods=['POST'])
 @secure_route
 def dislike():
@@ -80,7 +58,6 @@ def dislike():
   print(dislike_instance)
   dislike_instance.save()
   return dislike_schema.jsonify(dislike_data)
-
 
 
 
