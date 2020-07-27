@@ -42,8 +42,8 @@ dislike_1=Dislike(
 )
 
 match_1=Match(
-  user_id_1=2,
-  user_id_2=1
+  user_1_id=2,
+  user_2_id=1
 )
 
 # db.session.add(dislike_1)
