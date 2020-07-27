@@ -43,6 +43,7 @@ def like():
   
   like_instance.save()
   likers_of_user=Like.query.filter_by(liked_id=g.current_user.id, liker_id=like_data['liked_id']).first()
+  
 
   
 
