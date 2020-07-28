@@ -27,7 +27,7 @@ export const Login = () => {
   })
 
   const onSubmit = values => {
-    axios.put('/api/login', values)
+    axios.post('/api/login', values)
       .then(resp => {
         login(resp.data.token)
         console.log(resp.data.token)
