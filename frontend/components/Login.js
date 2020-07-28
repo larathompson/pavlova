@@ -31,7 +31,7 @@ export const Login = () => {
     axios.post('/api/login', values)
       .then(() => {
         // logIn(response.data)
-        history.push('/home')
+        history.push('/pavlova')
       })
       .catch(err => {
         const errorMessages = {
