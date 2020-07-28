@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-
-
 export const Users = () => {
   const [usersData, updateUsersData] = useState([])
 

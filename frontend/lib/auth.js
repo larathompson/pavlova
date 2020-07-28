@@ -21,5 +21,6 @@ function getToken() {
 export default {
   getToken,
   isLoggedIn,
-  logout
+  logout,
+  login
 }
