@@ -26,7 +26,7 @@ export const Users = () => {
       {usersData.map((users, index) => {
         return (
           <article key={index}>
-            <h3>{usersData.first_name}</h3>
+            <h3>{usersData[0].first_name}</h3>
           </article>
         )
       })}
