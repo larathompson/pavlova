@@ -10,10 +10,14 @@ from marshmallow import ValidationError
 from models.likes import Like
 from models.dislikes import Dislike
 from models.matches import Match
+#from sqlalchemy import or_
+
+
 user_schema = UserSchema()
 like_schema = LikeSchema()
 dislike_schema = DislikeSchema()
 match_schema = MatchSchema()
+
 # GET all users
 router = Blueprint(__name__, 'users')
 @router.route('/users', methods=['GET'])
@@ -22,6 +26,8 @@ def get_users():
   users = User.query.all()
   print('hello')
   return user_schema.jsonify(users, many=True), 200
+
+
 @router.route('/likes', methods=['GET', 'POST'])
 @secure_route
 def like():
@@ -41,6 +47,8 @@ def like():
     )
     match.save()
     return "Match"
+
+
 @router.route('/dislikes', methods=['POST'])
 @secure_route
 def dislike():
@@ -52,6 +60,20 @@ def dislike():
   print(dislike_instance)
   dislike_instance.save()
   return dislike_schema.jsonify(dislike_data)
+
+
+@router.route('/matches', methods=['GET'])
+@secure_route
+def matches():
+ 
+  matches = Match.query.filter((Match.user_1_id==g.current_user.id) | (Match.user_2_id==g.current_user.id)).all()
+  
+  # match_instances = matches.query.filter_by(matches.id)
+  # print(match_instances)
+  print(matches)
+  print(type(matches))
+  return match_schema.jsonify(matches, many=True)
+
 
 
 
