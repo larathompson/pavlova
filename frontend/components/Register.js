@@ -59,7 +59,7 @@ export const Register = () => {
         <h1>Welcome to Pavlova</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
 
-          <TextField
+          {/* <TextField
             name="email"
             inputRef={register}
             type="text"
@@ -134,9 +134,9 @@ export const Register = () => {
             variant="outlined"
             autoComplete="nope"
             error={errors.password_confirmation?.message}
-          />
+          /> */}
 
-          {/* <label htmlFor="email">Enter your email address</label><br></br>
+          <label htmlFor="email">Enter your email address</label><br></br>
           <input id="email" type="email" name="email" autoComplete="off" placeholder="Email address" ref={register} />
           <p>{errors.email?.message}</p>    
 
@@ -149,9 +149,9 @@ export const Register = () => {
           <p>{errors.last_name?.message}</p>
 
           <label htmlFor="gender">Select your gender</label><br></br>
-          <select name="gender" ref={register}> */}
+          <select name="gender" ref={register}>
             {/* <option value="" disabled selected hidden>Select gender</option> */}
-            {/* <option value="" disabled defaultValue hidden>Select gender</option>
+            <option value="" disabled defaultValue hidden>Select gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
@@ -170,7 +170,7 @@ export const Register = () => {
           <p>{errors.password_confirmation?.message}</p>
 
           <br></br>
-          <br></br> */}
+          <br></br>
 
           <button type="submit">Submit</button>
 

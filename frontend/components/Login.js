@@ -29,11 +29,10 @@ export const Login = () => {
   })
 
   const onSubmit = values => {
+    localStorage.setItem('token')
     axios.post('/api/login', values)
       .then(resp => {
         login(resp.data.token)
-        console.log(resp.data.token)
-        // logIn(response.data)
         history.push('/pavlova')
       })
       .catch(err => {
