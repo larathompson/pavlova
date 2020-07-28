@@ -10,26 +10,18 @@ from marshmallow import ValidationError
 from models.likes import Like
 from models.dislikes import Dislike
 from models.matches import Match
-
-
 user_schema = UserSchema()
 like_schema = LikeSchema()
 dislike_schema = DislikeSchema()
 match_schema = MatchSchema()
-
-
 # GET all users
-
 router = Blueprint(__name__, 'users')
-
 @router.route('/users', methods=['GET'])
 @secure_route
 def get_users():
   users = User.query.all()
   print('hello')
   return user_schema.jsonify(users, many=True), 200
-
-
 @router.route('/likes', methods=['GET', 'POST'])
 @secure_route
 def like():
@@ -47,15 +39,12 @@ def like():
   print('')
   print('*************')
   print('')
-
   match = Match(
     user_1_id=likers_of_user.liked_id,
     user_2_id=likers_of_user.liker_id
   )
   match.save()
-  
   return like_schema.jsonify(like_data)
-
 @router.route('/dislikes', methods=['POST'])
 @secure_route
 def dislike():
@@ -67,7 +56,6 @@ def dislike():
   print(dislike_instance)
   dislike_instance.save()
   return dislike_schema.jsonify(dislike_data)
-
 
 
 

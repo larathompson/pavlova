@@ -8,4 +8,3 @@ class Like(db.Model, BaseModel):
   liked_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
   liker_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
   user_relationship = db.relationship('User', foreign_keys=[liker_id], backref='likes')
-
