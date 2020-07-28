@@ -32,10 +32,8 @@ export const Login = () => {
     event.preventDefault()
     axios.post('/api/login', values)
       .then(resp => {
-        // if (resp.data.message = )
         login(resp.data.token)
         console.log(resp)
-        // logIn(response.data)
         history.push('/pavlova')
       })
       .catch(err => {
