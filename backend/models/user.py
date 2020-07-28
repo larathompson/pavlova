@@ -48,7 +48,7 @@ class User(db.Model, BaseModel):
   dob = db.Column(db.DateTime(), nullable=False)
   age_pref_min = db.Column(db.Integer(), nullable=True)
   age_pref_max = db.Column(db.Integer, nullable=True)
-  gender = db.Column(db.String(6), nullable=True)
+  gender = db.Column(db.String(6), nullable=False)
   gender_pref = db.Column(db.String(128), nullable=True)
   location_longitude = db.Column(db.Float(20), nullable=True)
   location_latitude = db.Column(db.Float(20), nullable=True)

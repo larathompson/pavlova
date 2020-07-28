@@ -7,7 +7,7 @@ function calculate_age(dob) {
 
 console.log(calculate_age(new Date(1982, 11, 4)));
 
-console.log(calculate_age(new Date(1994, 12, 18)));
+console.log(calculate_age(new Date(1994, 05, 18)));
 
 
 function filterByValue(array, string) {

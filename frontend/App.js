@@ -8,6 +8,9 @@ import { Login } from './components/Login'
 import { Users } from './components/GetUsers'
 import { Preferences } from './components/Preferences'
 
+import './styles/normalize.css'
+import './styles/style.scss'
+
 const App = () => {
   return (
     <HashRouter>

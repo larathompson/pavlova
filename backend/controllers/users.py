@@ -37,7 +37,7 @@ def login():
   data = request.get_json()
   user = User.query.filter_by(email=data['email']).first()
   if not user or not user.validate_password(data['password']):
-    return jsonify( {'message': 'Unauthorized'})
+    return jsonify( {'message': 'Unauthorized'}), 401
   token = user.generate_token()
 
   return jsonify( { 'token': token, 'message': 'I am not a photographer but I can picture us together!'})
