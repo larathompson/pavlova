@@ -27,15 +27,17 @@ export const Login = () => {
   })
 
   const onSubmit = values => {
-    axios.put('/api/login', values)
+    axios.post('/api/login', values)
       .then(resp => {
+     
         login(resp.data.token)
-        console.log(resp.data.token)
+        console.log(resp.data)
         history.push('/pavlova')
       })
       .catch(err => {
+        console.log(err.response)
         const errorMessages = {
-          email: 'Email address not found.',
+          email: 'Email address not found',
           password: 'Incorrect password'
         }
         Object.keys(err.response.data).forEach(errorField => {
