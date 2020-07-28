@@ -48,8 +48,6 @@ export const Users = () => {
     axios.post('/api/dislikes', { disliked_id: parseInt(event.target.value) },  { headers: { Authorization: `Bearer ${Auth.getToken() }` } } )
   }
 
-
-
   function getAge(dob) {
     const diffMs = Date.now() - dob.getTime()
     const ageDt = new Date(diffMs)

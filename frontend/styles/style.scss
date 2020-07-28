@@ -1,0 +1,21 @@
+@import url('https://fonts.google.com/specimen/Pacifico?preview.text=Pavlova&preview.text_type=custom');
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+// project colour scheme
+
+$dark-pink:rgb(122, 2, 70);
+$light-pink: rgb(211, 195, 195);
+$bright-pink :rgb(255,81,104);
+$white: #e6dddd;
+$dark-red: rgb(39, 9, 13);
+
+$curly-font: "Pacifico", cursive;
+$plain-font: "Pacifico", cursive;
+
+
+
+#splashscreen {
+  h1 {
+    font-family: $curly-font;
+  }
+  
+}
