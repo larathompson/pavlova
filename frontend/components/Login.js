@@ -28,11 +28,13 @@ export const Login = () => {
     criteriaMode: 'all'
   })
 
-  const onSubmit = values => {
+  function onSubmit (values, event) {
+    event.preventDefault()
     axios.post('/api/login', values)
       .then(resp => {
+        // if (resp.data.message = )
         login(resp.data.token)
-        console.log(resp.data.token)
+        console.log(resp)
         // logIn(response.data)
         history.push('/pavlova')
       })
@@ -53,7 +55,7 @@ export const Login = () => {
         <h1>Sign In</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email">Enter email</label><br></br>
-          <input id="email" type="text" name="email" autoComplete="off" placeholder="Email address" ref={register} />
+          <input id="email" type="email" name="email" autoComplete="off" placeholder="Email address" ref={register} />
           <p>{errors.email?.message}</p>
           <label htmlFor="password">Enter your password</label><br></br>
           <input id="password" type="password" name="password" autoComplete="off" placeholder="Password" ref={register} />

@@ -32,19 +32,15 @@ def like():
   )
   like_instance.save()
   likers_of_user=Like.query.filter_by(liked_id=g.current_user.id, liker_id=like_data['liked_id']).first()
-  print('')
-  print('*************')
-  print('')
-  print(likers_of_user)
-  print('')
-  print('*************')
-  print('')
-  match = Match(
-    user_1_id=likers_of_user.liked_id,
-    user_2_id=likers_of_user.liker_id
-  )
-  match.save()
-  return like_schema.jsonify(like_data)
+  if not likers_of_user: 
+    return like_schema.jsonify(like_data)
+  else:
+    match = Match(
+      user_1_id=likers_of_user.liked_id,
+      user_2_id=likers_of_user.liker_id
+    )
+    match.save()
+    return "Match"
 @router.route('/dislikes', methods=['POST'])
 @secure_route
 def dislike():

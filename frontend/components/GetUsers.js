@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import Auth from '../lib/auth'
 // import moment from 'moment'
 
 export const Users = () => {
@@ -32,6 +33,22 @@ export const Users = () => {
   // console.log(formatted_date)
 
 
+  function handleLike(event) {
+    console.log(event.target.value)
+    axios.post('/api/likes', { liked_id: parseInt(event.target.value) },  { headers: { Authorization: `Bearer ${Auth.getToken() }` } } )
+      .then(res => {
+        if (res.data === 'Match') {
+          console.log('match')
+        }
+      })
+  }
+
+  function handleDislike(event) {
+    console.log(event.target.value)
+    axios.post('/api/dislikes', { disliked_id: parseInt(event.target.value) },  { headers: { Authorization: `Bearer ${Auth.getToken() }` } } )
+  }
+
+
 
   function getAge(dob) {
     const diffMs = Date.now() - dob.getTime()
@@ -55,8 +72,8 @@ export const Users = () => {
               <h3>hello</h3>
             </article>
             <div id="buttons">
-              <button> Like</button>
-              <button> Dislike</button>
+              <button onClick={handleLike} value={user.id}>Like</button>
+              <button onClick={handleDislike} value={user.id}> Dislike</button>
             </div>
           </section>
 
