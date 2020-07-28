@@ -12,7 +12,9 @@ lara=User(
   email="lara@lara.com",
 	first_name="lara",
 	last_name="lara",
-	password="lara"
+	password="Laralara1",
+  dob="1994-12-18",
+  gender="female"
 
 )
 
@@ -20,14 +22,18 @@ shaikh=User(
   email="shaikh@shaikh.com",
 	first_name="shaikh",
 	last_name="shaikh",
-	password="shaikh"
+	password="Shaikh123",
+  dob="1993-11-13",
+  gender="male"
 )
 
 ali=User(
   email="ali@ali.com",
 	first_name="ali",
 	last_name="ali",
-	password="ali"
+	password="AliAli123",
+  dob="1996-09-21",
+  gender="male"
 )
 
 like_1=Like(

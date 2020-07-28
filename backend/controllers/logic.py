@@ -36,8 +36,6 @@ def like():
   print('*************')
   print('')
   print(likers_of_user)
-  print(type(likers_of_user))
-  print(likers_of_user.liked_id)
   print('')
   print('*************')
   print('')
