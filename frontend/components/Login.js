@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers'
 import * as Yup from 'yup'
 import axios from 'axios'
 import { login } from '../lib/auth'
-// import { UserContext } from './Context' ! Remember to import useContext
 import FadeIn from 'react-fade-in'
 
 const loginSchema = Yup.object().shape({
@@ -21,7 +20,6 @@ const loginSchema = Yup.object().shape({
 
 export const Login = () => {
 
-  // const { logIn } = useContext(UserContext)
   const history = useHistory()
   const { register, handleSubmit, errors, setError } = useForm({
     resolver: yupResolver(loginSchema),
@@ -29,11 +27,10 @@ export const Login = () => {
   })
 
   const onSubmit = values => {
-    axios.post('/api/login', values)
+    axios.put('/api/login', values)
       .then(resp => {
         login(resp.data.token)
         console.log(resp.data.token)
-        // logIn(response.data)
         history.push('/pavlova')
       })
       .catch(err => {

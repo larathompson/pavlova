@@ -52,7 +52,7 @@ class User(db.Model, BaseModel):
   gender_pref = db.Column(db.String(128), nullable=True)
   location_longitude = db.Column(db.Float(20), nullable=True)
   location_latitude = db.Column(db.Float(20), nullable=True)
-  location_distance = db.Column(db.Integer(20), nullable=True)
+  location_distance = db.Column(db.Integer(), nullable=True)
   bio = db.Column(db.String(5000), nullable=True, unique=True)
   # like = db.relationship('Like', secondary=like, primaryjoin="User.id==likes_table.c.liked_by_id", secondaryjoin="User.id==likes_table.c.likee_id", backref='users')
   # dislike = db.relationship('Dislike', secondary=dislike, primaryjoin="User.id==dislikes_table.c.disliked_by_id", secondaryjoin="User.id==dislikes_table.c.dislikee_id", backref='users')
