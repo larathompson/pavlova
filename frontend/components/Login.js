@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers'
 import * as Yup from 'yup'
 import axios from 'axios'
+import { login } from '../lib/auth'
 // import { UserContext } from './Context' ! Remember to import useContext
 import FadeIn from 'react-fade-in'
 
@@ -29,7 +30,9 @@ export const Login = () => {
 
   const onSubmit = values => {
     axios.post('/api/login', values)
-      .then(() => {
+      .then(resp => {
+        login(resp.data.token)
+        console.log(resp.data.token)
         // logIn(response.data)
         history.push('/pavlova')
       })

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import 
+
 
 export const Users = () => {
   const [usersData, updateUsersData] = useState([])
 
   useEffect(() => {
-    axios.get('api/users')
+    const token = localStorage.getItem('token')
+    axios.get('api/users', { headers: { Authorization: `Bearer ${token}` } })
       .then(axiosResp => {
         updateUsersData(axiosResp.data)
       })
