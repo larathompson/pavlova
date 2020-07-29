@@ -1,6 +1,6 @@
 
 // //  cloudinary stuff
-import ReactFilestack from 'filestack-react'
+// import ReactFilestack from 'filestack-react'
 
 // import React, { useState, useEffect } from 'react'
 // import { CloudinaryContext, Image } from 'cloudinary-react'
@@ -60,6 +60,6 @@ import ReactFilestack from 'filestack-react'
   //     <button onClick={() => beginUpload()}> Upload Image </button>
   //   </CloudinaryContext >
   // )
-}
-export default Images
+// }
+// export default Images
 

@@ -7,7 +7,8 @@ class Match(db.Model, BaseModel):
   id = db.Column(db.Integer, primary_key=True)
   user_1_id = db.Column(db.Integer, db.ForeignKey('users.id'))
   user_2_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-  likes_relationship = db.relationship('User', foreign_keys=[user_1_id], backref='matches')
+  likes_relationship = db.relationship('User', foreign_keys=[user_2_id], backref='matches')
+  
 
 
 
