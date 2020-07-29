@@ -3,7 +3,7 @@ from models.user import User
 from models.likes import Like
 from models.dislikes import Dislike
 from models.matches import Match
-from models.user import Images
+
 
 with app.app_context():
   db.drop_all()
@@ -15,7 +15,8 @@ lara=User(
 	last_name="lara",
 	password="C0r0naKaren",
   dob="1994-12-18",
-  gender="female"
+  gender="female",
+  image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png'
 
 )
 
@@ -28,7 +29,8 @@ shaikh=User(
   gender="male",
   gender_pref = "female",
   age_pref_max = 29,
-  age_pref_min = 22
+  age_pref_min = 22,
+  image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png'
 )
 
 ali=User(
@@ -37,7 +39,8 @@ ali=User(
 	last_name="ali",
 	password="AliAli123",
   dob="1996-09-21",
-  gender="male"
+  gender="male",
+  image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png'
 )
 
 like_1=Like(
@@ -56,20 +59,20 @@ dislike_1=Dislike(
   disliked_id=2
 )
 
-image_1=Images(
-  image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png',
-  user_id = 1
-)
+# image_1=Images(
+#   image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png',
+#   user_id = 1
+# )
 
-image_2=Images(
-  image_1 = 'https://pbs.twimg.com/profile_images/1072898126128779264/YzGnrGa4_400x400.jpg',
-  user_id = 2
-)
+# image_2=Images(
+#   image_1 = 'https://pbs.twimg.com/profile_images/1072898126128779264/YzGnrGa4_400x400.jpg',
+#   user_id = 2
+# )
 
-image_3=Images(
-  image_1='https://i.insider.com/5f1f25883f7370509a6d46d8?width=879&format=jpeg',
-  user_id=3
-)
+# image_3=Images(
+#   image_1='https://i.insider.com/5f1f25883f7370509a6d46d8?width=879&format=jpeg',
+#   user_id=3
+# )
 
 
 # db.session.add(dislike_1)
@@ -82,9 +85,9 @@ db.session.add(like_1)
 db.session.add(like_2)
 db.session.add(dislike_1)
 
-db.session.add(image_1)
-db.session.add(image_2)
-db.session.add(image_3)
+# db.session.add(image_1)
+# db.session.add(image_2)
+# db.session.add(image_3)
 
 db.session.commit()
 

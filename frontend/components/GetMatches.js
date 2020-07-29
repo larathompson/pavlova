@@ -22,6 +22,7 @@ export const GetMatches = () => {
       return <div className="singleMatch" key={index}>
         <h3>{match.first_name}</h3>
         <h3>{match.dob}</h3>
+        
       </div>
     })}
   </main>

@@ -54,6 +54,7 @@ class User(db.Model, BaseModel):
   location_latitude = db.Column(db.Float(20), nullable=True)
   location_distance = db.Column(db.Integer(), nullable=True)
   bio = db.Column(db.String(5000), nullable=True, unique=True)
+  image_1 = db.Column(db.String(300), nullable=True)
   # like = db.relationship('Like', secondary=like, primaryjoin="User.id==likes_table.c.liked_by_id", secondaryjoin="User.id==likes_table.c.likee_id", backref='users')
   # dislike = db.relationship('Dislike', secondary=dislike, primaryjoin="User.id==dislikes_table.c.disliked_by_id", secondaryjoin="User.id==dislikes_table.c.dislikee_id", backref='users')
   # match = db.relationship('Match', secondary=users_match, backref='users')
@@ -91,23 +92,23 @@ class User(db.Model, BaseModel):
 
     return token
 
-class Images(db.Model, BaseModel):
+# class Images(db.Model, BaseModel):
 
-  __tablename__= 'images'
+#   __tablename__= 'images'
 
-  id = db.Column(db.Integer, primary_key=True)
-  image_1 = db.Column(db.String(300), nullable=False)
-  image_2 = db.Column(db.String(300), nullable=True)
-  image_3 = db.Column(db.String(300), nullable=True)
-  image_4 = db.Column(db.String(300), nullable=True)
-  image_5 = db.Column(db.String(300), nullable=True)
-  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-  user = db.relationship('User', backref='images')
+#   id = db.Column(db.Integer, primary_key=True)
+#   image_1 = db.Column(db.String(300), nullable=False)
+#   image_2 = db.Column(db.String(300), nullable=True)
+#   image_3 = db.Column(db.String(300), nullable=True)
+#   image_4 = db.Column(db.String(300), nullable=True)
+#   image_5 = db.Column(db.String(300), nullable=True)
+#   user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#   user = db.relationship('User', backref='images')
 
-class ImagesSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
-  class Meta:
-    model = Images
-    load_instance = True
+# class ImagesSchema(ma.SQLAlchemyAutoSchema, BaseSchema):
+#   class Meta:
+#     model = Images
+#     load_instance = True
 
 
 
