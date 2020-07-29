@@ -7,6 +7,7 @@ import { Register } from './components/Register'
 import { Login } from './components/Login'
 import { Users } from './components/GetUsers'
 import { Preferences } from './components/Preferences'
+import Images from './components/Images'
 
 import './styles/normalize.css'
 import './styles/style.scss'
@@ -22,6 +23,7 @@ const App = () => {
           <Route exact path='/login' component={Login} />
           <Route exact path='/pavlova' component={Users} />
           <Route exact path = '/preferences' component={Preferences} />
+          <Route exact path = '/images' component={Images} />
         </Switch>
       </main>
     </HashRouter>

@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import axios from 'axios'
 import FadeIn from 'react-fade-in'
 
+
 const preferencesSchema = Yup.object().shape({
   bio: Yup.string(),
   age_pref_min: Yup.number()
@@ -59,3 +60,7 @@ export const Preferences = () => {
     </section>
   )
 }
+
+
+
+
