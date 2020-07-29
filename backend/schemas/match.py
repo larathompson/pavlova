@@ -9,4 +9,5 @@ class MatchSchema(ma.SQLAlchemyAutoSchema):
     load_instance = True
 
 
-likes_relationship = fields.Nested('LikeSchema', many=True)
+  likes_relationship = fields.Nested('UserSchema')
+#user_relationship = fields.Nested('UserSchema', many=True)
