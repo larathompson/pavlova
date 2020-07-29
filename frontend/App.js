@@ -8,7 +8,7 @@ import { Login } from './components/Login'
 import { Users } from './components/GetUsers'
 import { Preferences } from './components/Preferences'
 import { GetMatches } from './components/GetMatches'
-// import Images from './components/Images'
+import Images from './components/Images'
 
 import './styles/normalize.css'
 import './styles/style.scss'
@@ -25,7 +25,7 @@ const App = () => {
           <Route exact path='/pavlova' component={Users} />
           <Route exact path = '/preferences' component={Preferences} />
           <Route exact path = '/matches' component= {GetMatches} />
-          {/* <Route exact path = '/images' component={Images} /> */}
+          <Route exact path = '/images' component={Images} />
         </Switch>
       </main>
     </HashRouter>
