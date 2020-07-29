@@ -40,7 +40,7 @@ function Images() {
   }
 
   useEffect(() => { 
-      Axios.put
+      axios.put('/api/')
   }, [images])
 
   // this images compoennts is meant to deliver them as source links which can then just be put in img tag
