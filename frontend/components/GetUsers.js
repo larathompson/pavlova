@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Auth from '../lib/auth'
 import { Link } from 'react-router-dom'
+import Navbar from './Navbar'
 // import moment from 'moment'
 
 export const Users = () => {
@@ -48,8 +49,11 @@ export const Users = () => {
 
 
   if (!usersData.length)
-    return <div id="loading-container">
-      <h2>Loading...</h2>
+    return <div>
+      <Navbar />
+      <div id="loading-container">
+        <h2>Loading...</h2>
+      </div>
     </div>
 
 
@@ -91,31 +95,37 @@ export const Users = () => {
   }
 
 
-  return <section id="users">
+  return <div>
+    <div>
+      <Navbar />
+    </div>
+    <section id="users">
 
-    <h1>Like or nah</h1>
+      <h1>Like or nah</h1>
 
-    <section id="user-tiles">
-      {activeUser === usersData.length - 1 ?
-        <section>
-          <h3>Bollocks</h3>
-        </section> :
-        <section>
-          <article>
-            <h3>{usersData[activeUser]?.first_name}, {getAge(new Date(usersData[activeUser]?.dob))}</h3>
-            <img src={usersData[activeUser]?.image_1} />
-          </article>
-          <div id="buttons">
-            <button onClick={handleLike} value={usersData[activeUser]?.id}>Like</button>
-            <button onClick={handleDislike} value={usersData[activeUser]?.id}> Dislike</button>
-          </div>
-        </section>
-      }
-      <div>
-        <Link to="/matches"> See your matches </Link>
-        <Link to="/images"> Change your profile image </Link>
-      </div>
+      <section id="user-tiles">
+        {activeUser === usersData.length - 1 ?
+          <section>
+            <h3>Bollocks</h3>
+          </section> :
+          <section>
+            <article>
+              <h3>{usersData[activeUser]?.first_name}, {getAge(new Date(usersData[activeUser]?.dob))}</h3>
+              <img src={usersData[activeUser]?.image_1} />
+            </article>
+            <div id="buttons">
+              <button onClick={handleLike} value={usersData[activeUser]?.id}>Like</button>
+              <button onClick={handleDislike} value={usersData[activeUser]?.id}> Dislike</button>
+            </div>
+          </section>
+        }
+        <div>
+          <Link to="/matches"> See your matches </Link>
+          <Link to="/images"> Change your profile image </Link>
+        </div>
+      </section>
     </section>
-  </section>
+  </div>
+
 
 }

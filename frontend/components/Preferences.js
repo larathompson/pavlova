@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import axios from 'axios'
 import Slider from '@material-ui/core/Slider'
 import FadeIn from 'react-fade-in'
+import Navbar from './Navbar'
 
 const preferencesSchema = Yup.object().shape({
   bio: Yup.string(),
@@ -41,23 +42,28 @@ export const Preferences = () => {
   }
 
   return (
-    <section id="login">
-      <FadeIn>
-        <form onSubmit={handleSubmit(onSubmit)}>
+    <div>
+      <Navbar />
+      <section id="login">
 
-          <label htmlFor="bio">Enter your last name</label><br></br>
-          <input id="bio" type="text" name="bio" autoComplete="off" placeholder="Edit your bio" ref={register} />
+        <FadeIn>
+          <form onSubmit={handleSubmit(onSubmit)}>
 
-          <label htmlFor="age_pref_min">Set your minimum age preference</label><br></br>
-          <Slider min={18} max={70} onChange={handleChange} value={value} />
+            <label htmlFor="bio">Enter your last name</label><br></br>
+            <input id="bio" type="text" name="bio" autoComplete="off" placeholder="Edit your bio" ref={register} />
 
-          <button type="submit">Save changes</button>
-          <Link to='/pavlova'>
-            <button>Cancel</button>
-          </Link>
+            <label htmlFor="age_pref_min">Set your minimum age preference</label><br></br>
+            <Slider min={18} max={70} onChange={handleChange} value={value} />
 
-        </form>
-      </FadeIn>
-    </section>
+            <button type="submit">Save changes</button>
+            <Link to='/pavlova'>
+              <button>Cancel</button>
+            </Link>
+
+          </form>
+        </FadeIn>
+      </section>
+    </div>
+
   )
 }

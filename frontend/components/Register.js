@@ -16,6 +16,8 @@ const registerSchema = Yup.object().shape({
     .required('Please enter your last name'),
   gender: Yup.string()
     .required('Please select your gender'),
+  gender_pref: Yup.string()
+    .required('Please select your gender preference'),
   dob: Yup.date()
     .required('Please enter your date of birth'),
   password: Yup.string()
@@ -156,6 +158,13 @@ export const Register = () => {
             <option value="female">Female</option>
           </select>
           <p>{errors.gender?.message}</p>
+
+          <label htmlFor="gender_pref">What are you looking for?</label><br></br>
+          <select name="gender_pref" ref={register}>
+            <option value="male">Men</option>
+            <option value="female">Women</option>
+          </select>
+          <p>{errors.gender_pref?.message}</p>
 
           <label htmlFor="dob">Enter your date of birth</label><br></br>
           <input id="dob" type="date" name="dob" ref={register} />
