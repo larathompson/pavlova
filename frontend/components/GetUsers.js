@@ -68,7 +68,7 @@ export const Users = () => {
         }
       })
     if (usersData.length - 1 === activeUser) {
-      return 
+      return
     } else {
       updateActiveUser(activeUser + 1)
     }
@@ -96,23 +96,26 @@ export const Users = () => {
     <h1>Like or nah</h1>
 
     <section id="user-tiles">
-      <section>
-        <article>
-          <h3>{usersData[activeUser]?.first_name}, {getAge(new Date(usersData[activeUser]?.dob))}</h3>
-          {/* <h3>{user.dob}</h3> */}
-          {/* {console.log(getAge(new Date(user.dob)))} */}
-          <h3>hello</h3>
-        </article>
-        <div id="buttons">
-          <button onClick={handleLike} value={usersData[activeUser]?.id}>Like</button>
-          <button onClick={handleDislike} value={usersData[activeUser]?.id}> Dislike</button>
-        </div>
-      </section>
+      {activeUser === usersData.length - 1 ?
+        <section>
+          <h3>Bollocks</h3>
+        </section> :
+        <section>
+          <article>
+            <h3>{usersData[activeUser]?.first_name}, {getAge(new Date(usersData[activeUser]?.dob))}</h3>
+            <img src={usersData[activeUser]?.image_1} />
+          </article>
+          <div id="buttons">
+            <button onClick={handleLike} value={usersData[activeUser]?.id}>Like</button>
+            <button onClick={handleDislike} value={usersData[activeUser]?.id}> Dislike</button>
+          </div>
+        </section>
+      }
+      <div>
+        <Link to="/matches"> See your matches </Link>
+        <Link to="/images"> Change your profile image </Link>
+      </div>
     </section>
-    <div>
-      <Link to="/matches"> See your matches </Link>
-      <Link to="/images"> Change your profile image </Link>
-    </div>
   </section>
 
 }

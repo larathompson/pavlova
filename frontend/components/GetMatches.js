@@ -9,6 +9,7 @@ export const GetMatches = () => {
   console.log(matches)
   console.log('this is the mathces')
 
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     axios.get('api/matches', { headers: { Authorization: `Bearer ${token}` } })
@@ -24,15 +25,23 @@ export const GetMatches = () => {
     return Math.abs(ageDt.getUTCFullYear() - 1970)
   }
 
+
+
   return <main className="matches">
-    {matches.map((match, index) => {
-      return <div className="singleMatch" key={index}>
-        <h3>{match.first_name}</h3>
-        <h3>{getAge(new Date(match.dob))}</h3>
-        <img src={match.image_1}/>
-        
-      </div>
-    })}
+    <h2>You have {matches.length} matches</h2>
+    {0 === matches.length ?
+      <h3>Keep swiping!</h3>
+      :
+      matches.map((match, index) => {
+        <div className="singleMatch" key={index}>
+
+          <h3>{match.first_name}</h3>
+          <h3>{getAge(new Date(match.dob))}</h3>
+          <img src={match.image_1} />
+
+        </div>
+      
+      })}
   </main>
 }
 

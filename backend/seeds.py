@@ -83,6 +83,9 @@ ali=User(
 	password="AliAli123",
   dob="1996-09-21",
   gender="male",
+  gender_pref = "female",
+  age_pref_max = 29,
+  age_pref_min = 22,
   image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png'
 )
 
