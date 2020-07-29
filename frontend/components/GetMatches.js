@@ -23,6 +23,7 @@ export const GetMatches = () => {
         <h3>{match.first_name}</h3>
         <h3>{match.dob}</h3>
         <img src={match.image_1}/>
+        <h3>{match.bio}</h3>
         
       </div>
     })}
