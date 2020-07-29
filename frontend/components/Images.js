@@ -3,7 +3,7 @@
 // import ReactFilestack from 'filestack-react'
 
 import React, { useState, useEffect } from 'react'
-import { CloudinaryContext, Image } from 'cloudinary-react'
+import { CloudinaryContext } from 'cloudinary-react'
 import { fetchPhotos, openUploadWidget } from '../CloudinaryService'
 import axios from 'axios'
 // import './App.css'
