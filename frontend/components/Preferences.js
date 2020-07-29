@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers'
 import * as Yup from 'yup'
 import axios from 'axios'
+import Slider from '@material-ui/core/Slider'
 import FadeIn from 'react-fade-in'
 
 const preferencesSchema = Yup.object().shape({
@@ -33,21 +34,24 @@ export const Preferences = () => {
       })
   }
 
+  const [value, setValue] = React.useState(30)
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue)
+  }
+
   return (
     <section id="login">
       <FadeIn>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="email">Enter your email address</label><br></br>
-          <input id="email" type="email" name="email" autoComplete="off" placeholder="Email address" ref={register} />
-          <p>{errors.email?.message}</p>
+          <label htmlFor="age_pref_min">Set your minimum age preference</label><br></br>
+          <Slider min={18} max={70} onChange={handleChange} value={value} />
 
           <label htmlFor="first_name">Enter your first name</label><br></br>
           <input id="first_name" type="text" name="first_name" autoComplete="off" placeholder="First name" ref={register} />
-          <p>{errors.first_name?.message}</p>
 
           <label htmlFor="last_name">Enter your last name</label><br></br>
           <input id="last_name" type="text" name="last_name" autoComplete="off" placeholder="Last name" ref={register} />
-          <p>{errors.last_name?.message}</p>
 
           <button type="submit">Save changes</button>
           <Link to='/pavlova'>
