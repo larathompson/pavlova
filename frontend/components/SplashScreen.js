@@ -9,7 +9,7 @@ export const Splashscreen = () => {
   // const { currentUser } = useContext(UserContext)
 
   return (
-    <FadeIn>
+    <FadeIn delay="200" >
       <section id="splashscreen">
         <div className="splash-photo">
         </div>

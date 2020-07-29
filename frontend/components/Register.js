@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers'
 import * as Yup from 'yup'
 import axios from 'axios'
 import FadeIn from 'react-fade-in'
-import TextField from '@material-ui/core/TextField'
+// import TextField from '@material-ui/core/TextField'
 
 const registerSchema = Yup.object().shape({
   email: Yup.string()
@@ -55,7 +55,7 @@ export const Register = () => {
 
   return (
     <section id="register">
-      <FadeIn>
+      <FadeIn delay="200">
         <h1>Welcome to Pavlova</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
 
