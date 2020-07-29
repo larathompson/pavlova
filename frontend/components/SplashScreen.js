@@ -11,16 +11,17 @@ export const Splashscreen = () => {
   return (
     <FadeIn>
       <section id="splashscreen">
-        <div className="buttons">
+        <div className="splash-photo">
+        </div>
+        <div className="splash-content">
           <h1>Pavlova</h1>
-          <p>A dating app for all</p>
-          {/* {!currentUser.isLoggedIn && <> */}
+          <p>{"Your dating life doesn't have to be a palaver!"}</p>
+          <p>Let Pavlova find you a PavLover</p>
           <Link to='/login'>
             <button>Log in to Pavlova</button>
           </Link>
           <br></br>
           <Link to='/register'>Not registered? Click here.</Link>
-          {/* </>} */}
         </div>
       </section>
     </FadeIn>

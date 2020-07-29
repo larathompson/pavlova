@@ -8,17 +8,34 @@ export const Users = () => {
   const [usersData, updateUsersData] = useState([])
   // const [filterUsers, updateFilterUsers] = useState([])
 
-  console.log(usersData)
   useEffect(() => {
     const token = localStorage.getItem('token')
-    axios.get('api/users', { headers: { Authorization: `Bearer ${token}` } })
-      .then(axiosResp => {
-        updateUsersData(axiosResp.data)
-        // updateFilterUsers(axiosResp)
-        // console.log(usersData)
-        //  console.log(filterUsers)
-        // console.log(usersData)
+    axios.get('api/preferences/user', { headers: { Authorization: `Bearer ${token}` } })
+      .then(res => {
+        const currentUser = res.data
+        axios.get('api/users', { headers: { Authorization: `Bearer ${token}` } })
+          .then(axiosResp => {
+            console.log(axiosResp.data)
+            console.log(currentUser)
+            const genderFilter = axiosResp.data.filter(user => user.gender === currentUser.gender_pref)
+            console.log(genderFilter)
+
+            const ageFilter = genderFilter.filter(user => 
+              (getAge(new Date(user.dob)) <= currentUser.age_pref_max) && 
+              (getAge(new Date(user.dob)) >= currentUser.age_pref_min))
+            // console.log(getAge(new Date(currentUser.dob)))
+            // console.log(currentUser.age_pref_min)
+            // console.log(currentUser.age_pref_max)
+
+
+            // console.log(ageFilter)
+
+            
+            updateUsersData(ageFilter)
+
+          })
       })
+
   }, [])
 
 
@@ -36,7 +53,7 @@ export const Users = () => {
 
   function handleLike(event) {
     console.log(event.target.value)
-    axios.post('/api/likes', { liked_id: parseInt(event.target.value) },  { headers: { Authorization: `Bearer ${Auth.getToken() }` } } )
+    axios.post('/api/likes', { liked_id: parseInt(event.target.value) }, { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
       .then(res => {
         if (res.data === 'Match') {
           console.log('match')
@@ -46,7 +63,7 @@ export const Users = () => {
 
   function handleDislike(event) {
     console.log(event.target.value)
-    axios.post('/api/dislikes', { disliked_id: parseInt(event.target.value) },  { headers: { Authorization: `Bearer ${Auth.getToken() }` } } )
+    axios.post('/api/dislikes', { disliked_id: parseInt(event.target.value) }, { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
   }
 
   function getAge(dob) {
@@ -65,7 +82,7 @@ export const Users = () => {
         return (
           <section key={index}>
             <article key={index}>
-              <h3>{user.first_name}, {getAge(new Date(user.dob))}</h3> 
+              <h3>{user.first_name}, {getAge(new Date(user.dob))}</h3>
               {/* <h3>{user.dob}</h3> */}
               {/* {console.log(getAge(new Date(user.dob)))} */}
               <h3>hello</h3>
