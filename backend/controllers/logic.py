@@ -67,12 +67,23 @@ def dislike():
 def matches():
  
   matches = Match.query.filter((Match.user_1_id==g.current_user.id) | (Match.user_2_id==g.current_user.id)).all()
+  my_list = []
+  for match in matches:
+    if match.user_1_id != g.current_user.id:
+      my_list.append(match.user_1_id)
+    else:
+      my_list.append(match.user_2_id)
+
+    #append that user id to the list
+
   
+  query = User.query.filter(User.id.in_(my_list)).all()
+  print(query)
   # match_instances = matches.query.filter_by(matches.id)
   # print(match_instances)
-  print(matches)
+  
   print(type(matches))
-  return match_schema.jsonify(matches, many=True)
+  return user_schema.jsonify(query, many=True)
 
 
 

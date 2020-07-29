@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Auth from '../lib/auth'
+import { Link } from 'react-router-dom'
 // import moment from 'moment'
 
 export const Users = () => {
@@ -79,7 +80,9 @@ export const Users = () => {
         )
       })}
     </section>
-
+<div>
+  <Link to="/matches"> See your matches </Link>
+</div>
   </section>
 
 }
