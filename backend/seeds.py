@@ -20,6 +20,46 @@ lara=User(
 
 )
 
+laura=User(
+  email="laura@laura.com",
+	first_name="laura",
+	last_name="laura",
+	password="C0r0naKaren",
+  dob="1994-12-18",
+  gender="female"
+
+)
+
+karen=User(
+  email="karen@karen.com",
+	first_name="karen",
+	last_name="karen",
+	password="C0r0naKaren",
+  dob="1994-12-18",
+  gender="female"
+
+)
+
+megan=User(
+  email="megan@megan.com",
+	first_name="megan",
+	last_name="megan",
+	password="C0r0naKaren",
+  dob="1994-12-18",
+  gender="female"
+
+)
+
+alison=User(
+  email="alison@alison.com",
+	first_name="alison",
+	last_name="alison",
+	password="C0r0naKaren",
+  dob="1994-12-18",
+  gender="female"
+
+)
+
 shaikh=User(
   email="shaikh@shaikh.com",
 	first_name="shaikh",
@@ -54,10 +94,6 @@ like_2=Like(
   liked_id=2
 )
 
-dislike_1=Dislike(
-  disliker_id=1,
-  disliked_id=2
-)
 
 # image_1=Images(
 #   image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png',
@@ -79,11 +115,14 @@ dislike_1=Dislike(
 db.session.add(lara)
 db.session.add(shaikh)
 db.session.add(ali)
+db.session.add(laura)
+db.session.add(karen)
+db.session.add(alison)
+db.session.add(megan)
 db.session.commit()
 
 db.session.add(like_1)
 db.session.add(like_2)
-db.session.add(dislike_1)
 
 # db.session.add(image_1)
 # db.session.add(image_2)

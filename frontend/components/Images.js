@@ -43,7 +43,9 @@ function Images() {
 
   useEffect(() => {
     axios.put('/api/preferences/user', { image_1: images })
-    console.log('you have posted')
+     .then()
+     console.log('you have posted')
+
   }, [images])
 
   // this images compoennts is meant to deliver them as source links which can then just be put in img tag
