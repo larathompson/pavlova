@@ -24,7 +24,10 @@ shaikh=User(
 	last_name="shaikh",
 	password="Shaikh123123",
   dob="1993-11-30",
-  gender="male"
+  gender="male",
+  gender_pref = "female",
+  age_pref_max = 29,
+  age_pref_min = 22
 )
 
 ali=User(

@@ -27,6 +27,16 @@ def update():
   return user_schema.jsonify(user)
 
 
+@router.route('/preferences/user', methods=['GET'])
+@secure_route
+def show():
+  existing_user = User.query.get(g.current_user.id)
+  if not existing_user:
+    return 'User does not exist'
+  else:
+    return user_schema.jsonify(existing_user)
+
+
 
 
 
