@@ -16,6 +16,9 @@ lara=User(
 	password="C0r0naKaren",
   dob="1994-12-18",
   gender="female",
+  gender_pref = "male",
+  age_pref_max = 29,
+  age_pref_min = 22,
   image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png'
 
 )

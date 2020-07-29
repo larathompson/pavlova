@@ -111,6 +111,7 @@ export const Users = () => {
     </section>
     <div>
       <Link to="/matches"> See your matches </Link>
+      <Link to="/images"> Change your profile image </Link>
     </div>
   </section>
 

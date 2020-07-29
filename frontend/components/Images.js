@@ -42,9 +42,10 @@ function Images() {
   // }
 
   useEffect(() => {
-    axios.put('/api/preferences/user', { image_1: images })
-     .then()
-     console.log('you have posted')
+    const token = localStorage.getItem('token')
+    axios.put('/api/preferences/user', { image_1: images }, { headers: { Authorization: `Bearer ${token}` } })
+      .then()
+    console.log('you have posted')
 
   }, [images])
 
@@ -53,8 +54,8 @@ function Images() {
   return (
     <CloudinaryContext cloudName="pavlova">
       <div className="Images">
-        <section> 
-        <img src={images} alt='' />
+        <section>
+          <img src={images} alt='' />
           {/* {images.map((i, index) => <Image
             key={i}
             className={index}
