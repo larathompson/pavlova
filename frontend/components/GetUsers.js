@@ -33,8 +33,11 @@ export const Users = () => {
 
             // console.log(ageFilter)
 
+            const seenFilter = ageFilter.filter(user => !currentUser.has_seen.includes(user.id))
+            console.log(seenFilter)
 
-            updateUsersData(ageFilter)
+
+            updateUsersData(seenFilter)
 
 
 
@@ -76,6 +79,8 @@ export const Users = () => {
     } else {
       updateActiveUser(activeUser + 1)
     }
+
+    axios.post('/api/seen', { 'id': parseInt(event.target.value) }, { headers: { Authorization: `Bearer ${Auth.getToken()}` } } )
   }
 
   function handleDislike(event) {
@@ -86,6 +91,8 @@ export const Users = () => {
     } else {
       updateActiveUser(activeUser + 1)
     }
+
+    axios.post('/api/seen', { 'id': parseInt(event.target.value) }, { headers: { Authorization: `Bearer ${Auth.getToken()}` } } )
   }
 
   function getAge(dob) {

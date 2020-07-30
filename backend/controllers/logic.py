@@ -64,8 +64,6 @@ def post_seen():
   else:
     existing_user.has_seen = existing_user.has_seen + [seen_data['id']]
   existing_user.save()
-  # seen_instance = User(
-  #   has_seen = has_seen.append(seen_data)
 
   return user_schema.jsonify(existing_user)
 
