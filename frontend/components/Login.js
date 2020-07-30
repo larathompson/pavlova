@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import axios from 'axios'
 import { login } from '../lib/auth'
 import FadeIn from 'react-fade-in'
+import splashLogo from '../assets/pav-logo.png'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()

@@ -1,5 +1,5 @@
 @import url('https://fonts.google.com/specimen/Pacifico?preview.text=Pavlova&preview.text_type=custom');
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url('<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">');
 // project colour scheme
 
 $dark-pink:rgb(122, 2, 70);
@@ -9,37 +9,60 @@ $white: #e6dddd;
 $dark-red: rgb(39, 9, 13);
 
 $curly-font: "Pacifico", cursive;
-$plain-font: "Pacifico", cursive;
+$plain-font: 'Quicksand', sans-serif;
 
 
+body {
+  height: 100vh;
+  font-weight: 300;
+  background-color: $light-pink;
+  font-family: $plain-font;
+  #root {
+    height: 100%;
+  }
+}
 
 #splashscreen {
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8rem;
+  padding: 2rem;
   .splash-photo {
-    padding-top: 12rem;
+    // padding-top: rem;
     img {
-      height: 50rem;
+      height: 36rem;
     }
+  }
+  h3 {
+    color: $dark-pink;
+    font-family: $curly-font;
+    font-size: 10rem;
+    margin-top: 8rem;
+    margin-bottom: 1rem;
   }
   .splash-content {
     display: flex;
     flex-direction: column;
-    width: 50vw;
-    p, a {
+    align-items: center;
+    width: 70vw;
+    p {
       color: $dark-pink;
       font-size: 50px;
       text-align: center;
+      margin: 1rem 0rem;
+    }
+    .login-btn {
+      margin: 3rem;
     }
     button {
       background-color: $dark-pink;
       color: $light-pink;
       border-radius: 20px;
-      height: 5rem;
-      margin-bottom: 5rem;
+      padding: 2rem 4rem;
+      font-size: 5rem;
+      border: 3px solid $light-pink;
+      cursor: pointer;
     }
   }
 
@@ -80,6 +103,30 @@ $plain-font: "Pacifico", cursive;
       background-color: $dark-pink;
       color: $light-pink;
     }
+  }
+}
+
+#register,
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10rem;
+  h1 {
+    font-family: $curly-font;
+    color: $dark-pink;
+    text-align: center;
+    font-size: 6rem;
+    margin: 2rem;
+    padding-top: 3rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  img {
+    height: 36rem;
   }
 }
 
