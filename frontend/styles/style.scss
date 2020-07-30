@@ -107,7 +107,8 @@ body {
 }
 
 #register,
-#login {
+#login,
+#preferences {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,7 +127,13 @@ body {
     align-items: center;
   }
   img {
-    height: 36rem;
+    height: 24rem;
+  }
+}
+
+#users {
+  img {
+    max-width: 300px;
   }
 }
 

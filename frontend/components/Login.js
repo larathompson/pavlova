@@ -51,6 +51,7 @@ export const Login = () => {
     <section id="login">
       <FadeIn>
         <h1>Sign In</h1>
+        <img src={splashLogo} />
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email">Enter email</label><br></br>
           <input id="email" type="emai" name="email" autoComplete="off" placeholder="Email address" ref={register} />

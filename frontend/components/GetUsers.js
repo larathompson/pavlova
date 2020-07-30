@@ -20,7 +20,7 @@ export const Users = () => {
           .then(axiosResp => {
             console.log(axiosResp.data)
             console.log(currentUser)
-            const genderFilter = axiosResp.data.filter(user => user.gender === currentUser.gender_pref)
+            const genderFilter = axiosResp.data.filter(user => (user.gender === currentUser.gender_pref) || currentUser.gender_pref === 'both')
             console.log(genderFilter)
 
             const ageFilter = genderFilter.filter(user =>
