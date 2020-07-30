@@ -20,8 +20,7 @@ lara=User(
   age_pref_max = 29,
   age_pref_min = 22,
   image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png',
-  has_seen = [3]
-
+  has_seen = [2]
 )
 
 laura=User(
@@ -128,6 +127,7 @@ match_1=Match(
 #   image_1='https://i.insider.com/5f1f25883f7370509a6d46d8?width=879&format=jpeg',
 #   user_id=3
 # )
+
 
 
 # db.session.add(dislike_1)
