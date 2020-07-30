@@ -20,7 +20,6 @@ router = Blueprint(__name__, 'users')
 @secure_route
 def get_users():
   users = User.query.all()
-  users.f
   print('hello')
   return user_schema.jsonify(users, many=True), 200
 @router.route('/likes', methods=['GET', 'POST'])

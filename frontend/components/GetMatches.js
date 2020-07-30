@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-<<<<<<< HEAD
-import Auth from '../lib/auth'
-=======
 import Navbar from './Navbar'
 // import Auth from '../lib/auth'
 // import { getAge } from './GetUsers'
->>>>>>> development
 
 export const GetMatches = () => {
   const [matches, updateMatches] = useState([])
