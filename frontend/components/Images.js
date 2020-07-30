@@ -3,6 +3,7 @@
 // import ReactFilestack from 'filestack-react'
 
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { CloudinaryContext } from 'cloudinary-react'
 import { fetchPhotos, openUploadWidget } from '../CloudinaryService'
 import axios from 'axios'
@@ -67,6 +68,7 @@ function Images() {
         </section>
       </div>
       <button onClick={() => beginUpload()}> Upload Image </button>
+      <Link to="/preferences"><button> Save </button></Link>
     </CloudinaryContext >
   )
 }

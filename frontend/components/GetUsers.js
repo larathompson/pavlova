@@ -52,13 +52,13 @@ export const Users = () => {
   // }, [usersData])
 
 
-  if (!usersData.length)
-    return <div>
-      <Navbar />
-      <div id="loading-container">
-        <h2>Loading...</h2>
-      </div>
-    </div>
+  // if (!usersData.length)
+  //   return <div>
+  //     <Navbar />
+  //     <div id="loading-container">
+  //       <h2>Loading...</h2>
+  //     </div>
+  //   </div>
 
 
 
@@ -125,6 +125,7 @@ export const Users = () => {
             <article>
               <h3>{usersData[activeUser]?.first_name}, {getAge(new Date(usersData[activeUser]?.dob))}</h3>
               <img src={usersData[activeUser]?.image_1} />
+              <h3>{usersData[activeUser]?.bio}</h3>
             </article>
             <div id="buttons">
               <button onClick={handleLike} value={usersData[activeUser]?.id}>Like</button>
