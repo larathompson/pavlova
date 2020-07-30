@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "pipenv install; npm i; webpack -p; pipenv run python backend/seeds.py",
+    "build": "pip install pipenv; pipenv install; npm i; webpack -p; pipenv run python backend/seeds.py",
     "serve:react": "webpack-dev-server",
     "serve:flask": "pipenv run flask run"
   },
