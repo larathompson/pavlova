@@ -20,7 +20,7 @@ router = Blueprint(__name__, 'users')
 @secure_route
 def get_users():
   users = User.query.all()
-  users.f
+
   print('hello')
   return user_schema.jsonify(users, many=True), 200
 @router.route('/likes', methods=['GET', 'POST'])
@@ -53,6 +53,19 @@ def dislike():
   print(dislike_instance)
   dislike_instance.save()
   return dislike_schema.jsonify(dislike_data)
+
+
+@router.route('/matched/<int:id>', methods=['GET'])
+@secure_route
+def matched():
+  req = request.get_json()
+  matched_user = User.query.get(req['id'])
+  #requests needs to include user id
+
+  print(matched_user)
+  # matched_user_id = User.query.filter(matched_user[id])
+  return user_schema.jsonify(matched_user)
+
 
 
 

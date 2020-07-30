@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-<<<<<<< HEAD
-import Auth from '../lib/auth'
-=======
 import Navbar from './Navbar'
+import { Link } from 'react-router-dom'
 // import Auth from '../lib/auth'
 // import { getAge } from './GetUsers'
->>>>>>> development
 
 export const GetMatches = () => {
   const [matches, updateMatches] = useState([])
@@ -44,13 +41,16 @@ export const GetMatches = () => {
 
               <h3>{match.first_name}</h3>
               <h3>{getAge(new Date(match.dob))}</h3>
-              <img src={match.image_1} />
+              <Link to={`/matched/${match.id}`}>
+                < img src={match.image_1} />
+              </Link>
+
 
             </div>
 
           })}
       </main>
-    </div>
   </div>
+  </div >
 
 }

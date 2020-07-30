@@ -19,7 +19,8 @@ lara=User(
   gender_pref = "male",
   age_pref_max = 29,
   age_pref_min = 22,
-  image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png'
+  image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png',
+  has_seen = [3]
 
 )
 
@@ -86,7 +87,8 @@ ali=User(
   gender_pref = "female",
   age_pref_max = 29,
   age_pref_min = 22,
-  image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png'
+  image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png',
+  has_seen = [3]
 )
 
 like_1=Like(
@@ -98,6 +100,16 @@ like_1=Like(
 like_2=Like(
   liker_id=3,
   liked_id=2
+)
+
+like_3=Like(
+  liker_id=2,
+  liked_id=3
+)
+
+match_1=Match(
+  user_1_id= 2,
+  user_2_id=3
 )
 
 
@@ -130,6 +142,10 @@ db.session.commit()
 
 db.session.add(like_1)
 db.session.add(like_2)
+db.session.add(like_3)
+
+db.session.add(match_1)
+
 
 # db.session.add(image_1)
 # db.session.add(image_2)
