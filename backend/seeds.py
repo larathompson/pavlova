@@ -39,8 +39,8 @@ karen=User(
 	last_name="karen",
 	password="C0r0naKaren",
   dob="1994-12-18",
-  gender="female"
-
+  gender="female",
+  image_1="https://thehomeschoolresourceroom.com/wp-content/uploads/2017/04/social-media-2.jpg"
 )
 
 megan=User(
@@ -49,8 +49,9 @@ megan=User(
 	last_name="megan",
 	password="C0r0naKaren",
   dob="1994-12-18",
-  gender="female"
-
+  gender="female",
+  image_1="https://static.billboard.com/files/2020/05/megan-thee-stallion-press-cr-emilio-coochie-2020-znj-billboard-1548-1590588553-1024x677.jpg",
+  bio="Hot girl bummer"
 )
 
 alison=User(
@@ -59,8 +60,9 @@ alison=User(
 	last_name="alison",
 	password="C0r0naKaren",
   dob="1994-12-18",
-  gender="female"
-
+  gender="female",
+  image_1="https://www.hklaw.com/-/media/images/professionals/w/walker-karen-d/walker-karen-d.jpg",
+  bio="Shaikh the Flake"
 )
 
 shaikh=User(
@@ -90,21 +92,21 @@ ali=User(
   
 )
 
-# like_1=Like(
-#   # id=1,
-#   liker_id=1,
-#   liked_id=2
-# )
+like_1=Like(
+  # id=1,
+  liker_id=4,
+  liked_id=3
+)
 
-# like_2=Like(
-#   liker_id=3,
-#   liked_id=2
-# )
+like_2=Like(
+  liker_id=6,
+  liked_id=3
+)
 
-# like_3=Like(
-#   liker_id=2,
-#   liked_id=3
-# )
+like_3=Like(
+  liker_id=7,
+  liked_id=3
+)
 
 # match_1=Match(
 #   user_1_id= 2,
@@ -140,9 +142,9 @@ db.session.add(alison)
 db.session.add(megan)
 db.session.commit()
 
-# db.session.add(like_1)
-# db.session.add(like_2)
-# db.session.add(like_3)
+db.session.add(like_1)
+db.session.add(like_2)
+db.session.add(like_3)
 
 # db.session.add(match_1)
 
