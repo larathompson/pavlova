@@ -22,7 +22,9 @@ router = Blueprint(__name__, 'users')
 def get_users():
   users = User.query.all()
   print('hello')
+  
   return user_schema.jsonify(users, many=True), 200
+
 @router.route('/likes', methods=['GET', 'POST'])
 @secure_route
 def like():
@@ -59,10 +61,10 @@ def dislike():
 def post_seen():
   seen_data = request.get_json()
   existing_user = User.query.get(g.current_user.id)
-  if not existing_user.has_seen:
-    existing_user.has_seen = [seen_data['id']]
-  else:
-    existing_user.has_seen = existing_user.has_seen + [seen_data['id']]
+  # if not existing_user.has_seen:
+  #   existing_user.has_seen = [seen_data['id']]
+  # else:
+  existing_user.has_seen = existing_user.has_seen + [seen_data['id']]
   existing_user.save()
 
   return user_schema.jsonify(existing_user)
@@ -80,6 +82,24 @@ def matched():
   # matched_user_id = User.query.filter(matched_user[id])
   return user_schema.jsonify(matched_user)
 
+
+@router.route('/matches', methods=['GET'])
+@secure_route
+def matches():
+  matches = Match.query.filter((Match.user_1_id==g.current_user.id) | (Match.user_2_id==g.current_user.id)).all()
+  my_list = []
+  for match in matches:
+    if match.user_1_id != g.current_user.id:
+      my_list.append(match.user_1_id)
+    else:
+      my_list.append(match.user_2_id)
+    #append that user id to the list
+  query = User.query.filter(User.id.in_(my_list)).all()
+  print(query)
+  # match_instances = matches.query.filter_by(matches.id)
+  # print(match_instances)
+  print(type(matches))
+  return user_schema.jsonify(query, many=True)
 
 
 

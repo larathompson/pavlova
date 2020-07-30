@@ -16,6 +16,7 @@ export const GetMatches = () => {
     axios.get('api/matches', { headers: { Authorization: `Bearer ${token}` } })
       .then(axiosResp => {
         updateMatches(axiosResp.data)
+        console.log(axiosResp.data)
 
       })
   }, [])
@@ -50,7 +51,7 @@ export const GetMatches = () => {
 
           })}
       </main>
-  </div>
+    </div>
   </div >
 
 }
