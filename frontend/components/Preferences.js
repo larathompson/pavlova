@@ -4,19 +4,17 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers'
 import * as Yup from 'yup'
 import axios from 'axios'
-import Slider from '@material-ui/core/Slider'
+// import Slider from '@material-ui/core/Slider'
 import FadeIn from 'react-fade-in'
+import Navbar from './Navbar'
 
 const preferencesSchema = Yup.object().shape({
   bio: Yup.string(),
-  age_pref_min: Yup.number()
-    .required('No minimun age preference set'),
-  age_pref_max: Yup.number()
-    .required('No minimun age preference set'),
+  age_pref_min: Yup.number(),
+  age_pref_max: Yup.number(),
   gender_pref: Yup.string()
-    .required('Please select your gender preference'),
-  location_distance: Yup.number()
-    .required('No distance set')
+  // location_distance: Yup.number()
+  //   .required('No distance set')
 })
 
 export const Preferences = () => {
@@ -30,34 +28,39 @@ export const Preferences = () => {
   const onSubmit = values => {
     axios.put('/api/preferences/user', values)
       .then(() => {
-        history.push('/preferences')
+        console.log('what up bitch')
+        history.push('/pavlova')
       })
   }
 
-  const [value, setValue] = React.useState(30)
+  // const [age_pref_min, setValue] = React.useState(30)
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue)
-  }
+  // const handleChange = (value, newValue) => {
+  //   setValue(newValue)
+  // }
 
   return (
-    <section id="login">
-      <FadeIn>
-        <form onSubmit={handleSubmit(onSubmit)}>
+    <div>
+      <Navbar />
+      <section id="preferences">
 
-          <label htmlFor="bio">Enter your last name</label><br></br>
-          <input id="bio" type="text" name="bio" autoComplete="off" placeholder="Edit your bio" ref={register} />
+        <FadeIn>
+          <form onSubmit={handleSubmit(onSubmit)}>
 
-          <label htmlFor="age_pref_min">Set your minimum age preference</label><br></br>
-          <Slider min={18} max={70} onChange={handleChange} value={value} />
+            <label htmlFor="bio">Enter your last name</label><br></br>
+            <input id="bio" type="text" name="bio" autoComplete="off" placeholder="Edit your bio" ref={register} />
 
-          <button type="submit">Save changes</button>
-          <Link to='/pavlova'>
-            <button>Cancel</button>
-          </Link>
+            <label htmlFor="age_pref_min">Enter your minimum age preferences</label><br></br>
+            <input id="age_pref_min" type="number" name="age_pref_min" autoComplete="off" placeholder="18" ref={register} />
+            {/* <label htmlFor="age_pref_min">Set your minimum age preference</label><br></br>
+            <Slider id="age_pref_min" min={18} max={70} onChange={handleChange} value={age_pref_min} /> */}
 
-        </form>
-      </FadeIn>
-    </section>
+            <button type="submit">Save changes</button>
+
+          </form>
+        </FadeIn>
+      </section>
+    </div>
+
   )
 }

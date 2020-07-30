@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+<<<<<<< HEAD
 import Auth from '../lib/auth'
+=======
+import Navbar from './Navbar'
+// import Auth from '../lib/auth'
+// import { getAge } from './GetUsers'
+>>>>>>> development
 
 export const GetMatches = () => {
   const [matches, updateMatches] = useState([])
@@ -23,17 +29,28 @@ export const GetMatches = () => {
     return Math.abs(ageDt.getUTCFullYear() - 1970)
   }
 
-  return <main className="matches">
-    <h2>You have {matches.length} matches</h2>
-    {0 === matches.length ?
-      <h3>Keep swiping!</h3>
-      :
-      matches.map((match, index) => {
-        return <div className="singleMatch" key={index}>
-          <h3>{match.first_name}</h3>
-          <h3>{getAge(new Date(match.dob))}</h3>
-          <img src={match.image_1} />
-        </div>
-      })}
-  </main>
+
+
+  return <div>
+    <Navbar />
+    <div>
+      <main className="matches">
+        <h2>You have {matches.length} matches</h2>
+        {0 === matches.length ?
+          <h3>Keep swiping!</h3>
+          :
+          matches.map((match, index) => {
+            return <div className="singleMatch" key={index}>
+
+              <h3>{match.first_name}</h3>
+              <h3>{getAge(new Date(match.dob))}</h3>
+              <img src={match.image_1} />
+
+            </div>
+
+          })}
+      </main>
+    </div>
+  </div>
+
 }
