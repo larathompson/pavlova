@@ -1,5 +1,5 @@
 @import url('https://fonts.google.com/specimen/Pacifico?preview.text=Pavlova&preview.text_type=custom');
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url('<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">');
 // project colour scheme
 
 $dark-pink:rgb(122, 2, 70);
@@ -9,13 +9,131 @@ $white: #e6dddd;
 $dark-red: rgb(39, 9, 13);
 
 $curly-font: "Pacifico", cursive;
-$plain-font: "Pacifico", cursive;
+$plain-font: 'Quicksand', sans-serif;
 
 
+body {
+  height: 100vh;
+  font-weight: 300;
+  background-color: $light-pink;
+  font-family: $plain-font;
+  #root {
+    height: 100%;
+  }
+}
 
 #splashscreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  .splash-photo {
+    // padding-top: rem;
+    img {
+      height: 36rem;
+    }
+  }
+  h3 {
+    color: $dark-pink;
+    font-family: $curly-font;
+    font-size: 10rem;
+    margin-top: 8rem;
+    margin-bottom: 1rem;
+  }
+  .splash-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70vw;
+    p {
+      color: $dark-pink;
+      font-size: 50px;
+      text-align: center;
+      margin: 1rem 0rem;
+    }
+    .login-btn {
+      margin: 3rem;
+    }
+    button {
+      background-color: $dark-pink;
+      color: $light-pink;
+      border-radius: 20px;
+      padding: 2rem 4rem;
+      font-size: 5rem;
+      border: 3px solid $light-pink;
+      cursor: pointer;
+    }
+  }
+
+}
+
+#navbar {
+  background-color: $dark-pink;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  img.logo {
+    display: none;
+  }
+  ul {
+    display: flex;
+    // justify-content: space-evenly;
+    list-style: none;
+    max-width: 100%;
+    padding: 0em;
+    .nav-btn {
+      margin: 0 10px;
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+      height: 5vh;
+      border: 2px solid $light-pink;
+      a {
+        color: $light-pink;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+    }
+    .nav-btn:hover {
+      background-color: $dark-pink;
+      color: $light-pink;
+    }
+  }
+}
+
+#register,
+#login,
+#preferences {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10rem;
   h1 {
     font-family: $curly-font;
+    color: $dark-pink;
+    text-align: center;
+    font-size: 6rem;
+    margin: 2rem;
+    padding-top: 3rem;
   }
-  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  img {
+    height: 24rem;
+  }
 }
+
+#users {
+  img {
+    max-width: 300px;
+  }
+}
+

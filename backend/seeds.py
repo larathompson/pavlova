@@ -83,6 +83,9 @@ ali=User(
 	password="AliAli123",
   dob="1996-09-21",
   gender="male",
+  gender_pref = "female",
+  age_pref_max = 29,
+  age_pref_min = 22,
   image_1 = 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png'
 )
 
@@ -97,16 +100,6 @@ like_2=Like(
   liked_id=2
 )
 
-like_3=Like(
-  liker_id=2,
-  liked_id=1
-)
-
-match_1=Match(
-  user_1_id=1,
-  user_2_id=2
-
-)
 
 
 # image_1=Images(
@@ -137,8 +130,6 @@ db.session.commit()
 
 db.session.add(like_1)
 db.session.add(like_2)
-db.session.add(like_3)
-db.session.add(match_1)
 
 # db.session.add(image_1)
 # db.session.add(image_2)

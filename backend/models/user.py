@@ -46,15 +46,19 @@ class User(db.Model, BaseModel):
   last_name = db.Column(db.String(128), nullable=False, unique=True)
   password_hash = db.Column(db.String(128), nullable=False)
   dob = db.Column(db.DateTime(), nullable=False)
-  age_pref_min = db.Column(db.Integer(), nullable=True)
-  age_pref_max = db.Column(db.Integer, nullable=True)
+  age_pref_min = db.Column(db.Integer(), default=18, nullable=True)
+  age_pref_max = db.Column(db.Integer, default=70, nullable=True)
   gender = db.Column(db.String(6), nullable=False)
   gender_pref = db.Column(db.String(128), nullable=True)
   location_longitude = db.Column(db.Float(20), nullable=True)
   location_latitude = db.Column(db.Float(20), nullable=True)
   location_distance = db.Column(db.Integer(), nullable=True)
   bio = db.Column(db.String(5000), nullable=True, unique=True)
+<<<<<<< HEAD
   image_1 = db.Column(db.String(300), nullable=True)
+=======
+  image_1 = db.Column(db.String(300), default='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTG3eLpTAMWO-mtILepXLwg68-IChyGcXJgog&usqp=CAU', nullable=True)
+>>>>>>> development
   has_seen = db.Column(db.ARRAY(db.Integer()), nullable=True)
   # like = db.relationship('Like', secondary=like, primaryjoin="User.id==likes_table.c.liked_by_id", secondaryjoin="User.id==likes_table.c.likee_id", backref='users')
   # dislike = db.relationship('Dislike', secondary=dislike, primaryjoin="User.id==dislikes_table.c.disliked_by_id", secondaryjoin="User.id==dislikes_table.c.dislikee_id", backref='users')

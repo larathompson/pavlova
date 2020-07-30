@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Auth from '../lib/auth'
 import { Link } from 'react-router-dom'
+import Navbar from './Navbar'
 // import moment from 'moment'
 
 export const Users = () => {
@@ -19,7 +20,7 @@ export const Users = () => {
           .then(axiosResp => {
             console.log(axiosResp.data)
             console.log(currentUser)
-            const genderFilter = axiosResp.data.filter(user => user.gender === currentUser.gender_pref)
+            const genderFilter = axiosResp.data.filter(user => (user.gender === currentUser.gender_pref) || currentUser.gender_pref === 'both')
             console.log(genderFilter)
 
             const ageFilter = genderFilter.filter(user =>
@@ -48,8 +49,11 @@ export const Users = () => {
 
 
   if (!usersData.length)
-    return <div id="loading-container">
-      <h2>Loading...</h2>
+    return <div>
+      <Navbar />
+      <div id="loading-container">
+        <h2>Loading...</h2>
+      </div>
     </div>
 
 
@@ -68,7 +72,7 @@ export const Users = () => {
         }
       })
     if (usersData.length - 1 === activeUser) {
-      return 
+      return
     } else {
       updateActiveUser(activeUser + 1)
     }
@@ -91,28 +95,37 @@ export const Users = () => {
   }
 
 
-  return <section id="users">
+  return <div>
+    <div>
+      <Navbar />
+    </div>
+    <section id="users">
 
-    <h1>Like or nah</h1>
+      <h1>Like or nah</h1>
 
-    <section id="user-tiles">
-      <section>
-        <article>
-          <h3>{usersData[activeUser]?.first_name}, {getAge(new Date(usersData[activeUser]?.dob))}</h3>
-          {/* <h3>{user.dob}</h3> */}
-          {/* {console.log(getAge(new Date(user.dob)))} */}
-          <h3>hello</h3>
-        </article>
-        <div id="buttons">
-          <button onClick={handleLike} value={usersData[activeUser]?.id}>Like</button>
-          <button onClick={handleDislike} value={usersData[activeUser]?.id}> Dislike</button>
+      <section id="user-tiles">
+        {activeUser === usersData.length - 1 ?
+          <section>
+            <h3>Bollocks</h3>
+          </section> :
+          <section>
+            <article>
+              <h3>{usersData[activeUser]?.first_name}, {getAge(new Date(usersData[activeUser]?.dob))}</h3>
+              <img src={usersData[activeUser]?.image_1} />
+            </article>
+            <div id="buttons">
+              <button onClick={handleLike} value={usersData[activeUser]?.id}>Like</button>
+              <button onClick={handleDislike} value={usersData[activeUser]?.id}> Dislike</button>
+            </div>
+          </section>
+        }
+        <div>
+          <Link to="/matches"> See your matches </Link>
+          <Link to="/images"> Change your profile image </Link>
         </div>
       </section>
     </section>
-    <div>
-      <Link to="/matches"> See your matches </Link>
-      <Link to="/images"> Change your profile image </Link>
-    </div>
-  </section>
+  </div>
+
 
 }

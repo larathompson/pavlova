@@ -53,7 +53,7 @@ function Images() {
 
   return (
     <CloudinaryContext cloudName="pavlova">
-      <div className="Images">
+      <div className="images">
         <section>
           <img src={images} alt='' />
           {/* {images.map((i, index) => <Image

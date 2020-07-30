@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import axios from 'axios'
 import { login } from '../lib/auth'
 import FadeIn from 'react-fade-in'
+import splashLogo from '../assets/pav-logo.png'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -50,6 +51,7 @@ export const Login = () => {
     <section id="login">
       <FadeIn>
         <h1>Sign In</h1>
+        <img src={splashLogo} />
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email">Enter email</label><br></br>
           <input id="email" type="emai" name="email" autoComplete="off" placeholder="Email address" ref={register} />
