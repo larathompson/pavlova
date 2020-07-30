@@ -10,6 +10,7 @@ from marshmallow import ValidationError
 from models.likes import Like
 from models.dislikes import Dislike
 from models.matches import Match
+
 user_schema = UserSchema()
 like_schema = LikeSchema()
 dislike_schema = DislikeSchema()
@@ -20,7 +21,6 @@ router = Blueprint(__name__, 'users')
 @secure_route
 def get_users():
   users = User.query.all()
-  users.f
   print('hello')
   return user_schema.jsonify(users, many=True), 200
 @router.route('/likes', methods=['GET', 'POST'])
@@ -53,6 +53,22 @@ def dislike():
   print(dislike_instance)
   dislike_instance.save()
   return dislike_schema.jsonify(dislike_data)
+
+@router.route('/seen', methods=['POST'])
+@secure_route
+def post_seen():
+  seen_data = request.get_json()
+  existing_user = User.query.get(g.current_user.id)
+  if not existing_user.has_seen:
+    existing_user.has_seen = [seen_data['id']]
+  else:
+    existing_user.has_seen = existing_user.has_seen + [seen_data['id']]
+  existing_user.save()
+  # seen_instance = User(
+  #   has_seen = has_seen.append(seen_data)
+
+  return user_schema.jsonify(existing_user)
+
 
 
 
