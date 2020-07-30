@@ -108,7 +108,7 @@ export const Users = () => {
     </div>
     <section id="users">
 
-      <h1>Pavlova </h1>
+      <h1>Pavlova</h1>
 
       <section id="user-tiles">
         {activeUser === usersData.length ?
