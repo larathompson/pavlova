@@ -1,7 +1,7 @@
 {
   "name": "basic-react-webpack-setup",
   "version": "1.0.0",
-  "description": "",
+  "description": "pavlova",
   "main": "index.js",
   "scripts": {
     "build": "pipenv install; npm i; webpack -p; pipenv run python backend/seeds.py",
