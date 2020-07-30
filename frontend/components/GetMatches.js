@@ -38,17 +38,15 @@ export const GetMatches = () => {
           <h3>Keep swiping!</h3>
           :
           matches.map((match, index) => {
-            return <div className="singleMatch" key={index}>
-
-              <h3>{match.first_name}</h3>
-              <h3>{getAge(new Date(match.dob))}</h3>
+            return <div id="singleMatch" key={index}>
               <Link to={`/matched/${match.id}`}>
-                < img src={match.image_1} />
+                <div id="user-tiles">
+                  <h3>{match.first_name}</h3>
+                  <h3>{getAge(new Date(match.dob))}</h3>
+                  < img src={match.image_1} />
+                </div>
               </Link>
-
-
             </div>
-
           })}
       </main>
     </div>

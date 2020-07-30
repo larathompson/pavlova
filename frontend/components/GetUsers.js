@@ -22,7 +22,6 @@ export const Users = () => {
             console.log(currentUser)
             const genderFilter = axiosResp.data.filter(user => (user.gender === currentUser.gender_pref) || currentUser.gender_pref === 'both')
             console.log(genderFilter)
-            
 
             const ageFilter = genderFilter.filter(user =>
               (getAge(new Date(user.dob)) <= currentUser.age_pref_max) &&
@@ -73,7 +72,6 @@ export const Users = () => {
       .then(res => {
         if (res.data === 'Match') {
           console.log('match')
-          console.log(usersData)
         }
       })
     if (usersData.length === activeUser) {
@@ -102,11 +100,7 @@ export const Users = () => {
     const ageDt = new Date(diffMs)
     return Math.abs(ageDt.getUTCFullYear() - 1970)
   }
-  console.log('hello')
-  console.log('length')
-  console.log(usersData.length)
-  console.log('activeuser')
-  console.log(activeUser)
+
 
   return <div>
     <div>
@@ -117,9 +111,9 @@ export const Users = () => {
       <h1>Like or nah</h1>
 
       <section id="user-tiles">
-        {activeUser === usersData.length  ?
+        {activeUser === usersData.length ?
           <section>
-            <h3>{"What a Palaver! We've run out of users that meet your preferences"}</h3>
+            <h3>Bollocks</h3>
           </section> :
           <section>
             <article>

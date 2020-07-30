@@ -73,9 +73,8 @@ def post_seen():
 
 @router.route('/matched/<int:id>', methods=['GET'])
 @secure_route
-def matched():
-  req = request.get_json()
-  matched_user = User.query.get(req['id'])
+def matched(id):
+  matched_user = User.query.get(id)
   #requests needs to include user id
 
   print(matched_user)
