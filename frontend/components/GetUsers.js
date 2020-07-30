@@ -108,12 +108,13 @@ export const Users = () => {
     </div>
     <section id="users">
 
-      <h1>Like or nah</h1>
+      <h1>Pavlova</h1>
 
       <section id="user-tiles">
         {activeUser === usersData.length ?
           <section>
-            <h3>Bollocks</h3>
+            <h3>{"Whoops! Slow down, looks like you've swiped through all the users that meet your preferences."}</h3>
+            <h3>{"Try widening your search paramaters in your profile settings!"}</h3>
           </section> :
           <section>
             <article>
