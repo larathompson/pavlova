@@ -27,7 +27,7 @@ const App = () => {
           <Route exact path = '/preferences' component={Preferences} />
           <Route exact path = '/matches' component= {GetMatches} />
           <Route exact path = '/images' component={Images} />
-          <Route exact path = './matched' component={MatchedProfile} />
+          <Route exact path = '/matched/:id' component={MatchedProfile} />
         </Switch>
       </main>
     </HashRouter>

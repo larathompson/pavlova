@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Auth from '../lib/auth'
+// import Auth from '../lib/auth'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
+// import { ProgressPlugin } from 'webpack'
 
-function MatchedProfile() {
+function MatchedProfile(props) {
 
   const [matchedUser, updateMatchedUser] = useState({})
 
   useEffect(() => {
     const token = localStorage.getItem('token')
-    axios.get('/matched/<int:id>', { id: parseInt(event.target.value) }, { headers: { Authorization: `Bearer ${token}` } })
+    axios.get(`api/matched/${props.match.params.id}`, { headers: { Authorization: `Bearer ${token}` } })
       .then(axiosResp => {
         updateMatchedUser(axiosResp.data)
       })
