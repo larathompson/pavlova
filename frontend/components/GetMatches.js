@@ -40,7 +40,7 @@ export const GetMatches = () => {
           matches.map((match, index) => {
             return <div id="single-match" key={index}>
 
-              <Link to={`/matched/${match.id}`}>
+              <Link to={`/user/${match.id}`}>
                 < img src={match.image_1} />
               </Link>
               <h3>{match.first_name}</h3>

@@ -149,7 +149,9 @@ export const Users = () => {
             <h2>Swipe away!</h2>
             {/* <TinderCard onSwipe={onSwipe} preventSwipe={['up', 'down']} flickOnSwipe={true}> */}
             <article className="user-tile">
-              <img src={usersData[activeUser]?.image_1} />
+              <Link to={`/user/${usersData[activeUser]?.id}`}>
+                <img src={usersData[activeUser]?.image_1} />
+              </Link>
               <h3>{usersData[activeUser]?.first_name}, {getAge(new Date(usersData[activeUser]?.dob))}</h3>
             </article>
             {/* </TinderCard> */}
