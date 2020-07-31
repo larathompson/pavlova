@@ -30,19 +30,12 @@ function MatchedProfile(props) {
     </div>
     <section id="users">
       <h1>Its a Match!</h1>
-      <section id="user-tiles">
-        <section>
-          <article>
-            <h3>{matchedUser.first_name}, {getAge(new Date(matchedUser.dob))}</h3>
-            <img src={matchedUser.image_1} />
-            <h3>{matchedUser.bio}</h3>
-          </article>
-        </section>
-        <div>
-          <Link to="/matches"> See your matches </Link>
-          <Link to="/images"> Change your profile image </Link>
-        </div>
-      </section>
+      <article>
+        <h2>{matchedUser.first_name}</h2>
+        <img src={matchedUser.image_1} />
+        <h3>{getAge(new Date(matchedUser.dob))} years old</h3>
+        <p>{matchedUser.bio}</p>
+      </article>
     </section>
   </div>
 

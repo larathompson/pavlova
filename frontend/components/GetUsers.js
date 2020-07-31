@@ -142,7 +142,7 @@ export const Users = () => {
 
       <section id="get-users">
         {activeUser === usersData.length ?
-          <section>
+          <section id="no-matches">
             <h3>{"What a Palaver! No more users found 😢"}</h3>
             <h3>{"Try widening your search preferences!"}</h3>
           </section> :

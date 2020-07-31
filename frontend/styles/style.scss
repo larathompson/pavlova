@@ -109,8 +109,7 @@ body {
 }
 
 
-#login,
-#preferences {
+#login {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -256,6 +255,12 @@ body {
 }
 
 #get-users {
+  #no-matches {
+    margin: 15rem 10rem;
+    text-align: center;
+    font-size: 4rem;
+    color: $dark-pink;
+  }
   #swipe {
     display: flex;
     flex-direction: column;
@@ -285,6 +290,7 @@ body {
       }
       img {
         max-width: 30rem;
+        border-radius: 20px;
       }
     }
     #buttons {
@@ -303,6 +309,164 @@ body {
   }
 
 }
+
+
+#get-match {
+    h2 {
+    text-align: center;
+    margin-top: 5rem;
+    font-size: 5rem;
+    color: $dark-pink;
+  }
+  #matches {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  
+    #single-match {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         background-color: $dark-pink;
+         min-width: 15rem;
+         min-height: 15rem;
+         border-radius: 20%;
+         color: $light-pink;
+         padding: 2rem;
+         margin: 1rem 3rem;
+         box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, 0.4),
+         -3px -3px 10px 2px rgba(255, 255, 255, 0.9);
+         h3 {
+           font-size: 3rem;
+           margin: 0;
+           color: $light-pink;
+           text-decoration: none;
+           text-align: center;
+         }
+         img {
+           max-width: 15rem;
+           border-radius: 20px;
+         }
+    }
+    
+  }
+}
+
+#users {
+  text-align: center;
+  h1 {
+    color: $dark-pink;
+    font-family: $curly-font;
+    font-size: 8rem;
+    margin-bottom: 1em;
+  }
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+      color: $dark-pink;
+      font-size: 6rem;
+      margin-top: 0rem;
+    }
+    h3 {
+      color: $dark-pink;
+      font-size: 4rem;
+    }
+    img {
+      max-width: 40rem;
+      border-radius: 20px;
+      border: 10px solid $dark-pink;
+    }
+    p {
+      font-size: 2.25rem;
+    }
+  }
+}
+
+#preferences {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // padding: 0 5rem;
+  h1 {
+    font-family: $curly-font;
+    color: $dark-pink;
+    font-size: 6rem;
+    margin: 2rem;
+    padding-top: 12rem;
+    padding-bottom: 5rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    #bio-box {
+      #bio {
+        height: 200px;
+        width: 25rem;
+        border: 5px solid black;
+        padding: 1rem;
+        background-color: $light-pink;
+        color: $light-pink;
+      }
+    }
+  }
+
+  img {
+    height: 24rem;
+    padding-left: 5.7rem;
+  }
+
+  label {
+    display: none;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  input {
+    width: 35vw;
+    height: 5rem;
+    font-size: 3rem;
+    padding: 1rem;
+    margin: 3rem;
+    border-top: 0em;
+    border-left: 0em;
+    border-right: 0em;
+    border-bottom: 5px solid black;
+    background-color: rgba(12, 12, 12, 0);
+  }
+  p {
+    font-size: 25px;
+  }
+  button {
+    margin: 3.5rem 0; 
+    font-size: 2rem;
+    padding: 2.7rem;
+    border-radius: 20px;
+    color: $light-pink;
+    background-color: $dark-pink;
+    border: 5px solid $dark-pink;
+  }
+  button:hover {
+    background-color: $light-pink;
+    color: $dark-pink;
+  }
+  h4 {
+    color: $dark-pink;
+    text-decoration: underline;
+  }
+  select {
+    width: 375px;
+    font-size: 3rem;
+    background-color: rgba(122, 2, 70, 0);
+    color: grey;
+    padding: 0.5rem;
+  }
+
+}
+
 
 
 

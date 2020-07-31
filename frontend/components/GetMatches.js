@@ -31,24 +31,24 @@ export const GetMatches = () => {
 
   return <div>
     <Navbar />
-    <div>
-      <main className="matches">
-        <h2>You have {matches.length} matches</h2>
+    <div id="get-match">
+      <h2>You have {matches.length} matches</h2>
+      <section id="matches">
         {0 === matches.length ?
-          <h3>Keep swiping!</h3>
+          <h2>Keep swiping!</h2>
           :
           matches.map((match, index) => {
-            return <div id="singleMatch" key={index}>
+            return <div id="single-match" key={index}>
+
               <Link to={`/matched/${match.id}`}>
-                <div id="user-tiles">
-                  <h3>{match.first_name}</h3>
-                  <h3>{getAge(new Date(match.dob))}</h3>
-                  < img src={match.image_1} />
-                </div>
+                < img src={match.image_1} />
               </Link>
+              <h3>{match.first_name}</h3>
+              {/* <h3>{getAge(new Date(match.dob))}</h3> */}
+
             </div>
           })}
-      </main>
+      </section>
     </div>
   </div >
 
