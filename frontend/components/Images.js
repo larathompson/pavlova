@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { CloudinaryContext } from 'cloudinary-react'
 import { fetchPhotos, openUploadWidget } from '../CloudinaryService'
 import axios from 'axios'
+import Navbar from './Navbar'
 // import './App.css'
 
 function Images() {
@@ -52,9 +53,12 @@ function Images() {
 
   // this images compoennts is meant to deliver them as source links which can then just be put in img tag
 
-  return (
+  return <div id="images">
+    <Navbar />
+    <h3>Upload your profile photo here!</h3>
+    <h4>{"Once you've uploaded an image your preview will appear!"}</h4>
     <CloudinaryContext cloudName="pavlova">
-      <div className="images">
+      <div id="images-render">
         <section>
           <img src={images} alt='' />
           {/* {images.map((i, index) => <Image
@@ -70,7 +74,7 @@ function Images() {
       <button onClick={() => beginUpload()}> Upload Image </button>
       <Link to="/preferences"><button> Save </button></Link>
     </CloudinaryContext >
-  )
+  </div>
 }
 export default Images
 
