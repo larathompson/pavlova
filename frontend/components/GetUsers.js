@@ -139,8 +139,6 @@ export const Users = () => {
     </div>
     <section id="users">
 
-      <h1>Pavlova</h1>
-
       <section id="get-users">
         {activeUser === usersData.length ?
           <section id="no-matches">

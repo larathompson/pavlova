@@ -375,11 +375,14 @@ body {
       color: $dark-pink;
       font-size: 4rem;
     }
-    img {
-      max-width: 40rem;
-      border-radius: 20px;
-      border: 10px solid $dark-pink;
-    }
+#img-background {
+  background-color: $dark-pink;
+  img {
+    max-width: 40rem;
+    border-radius: 20px;
+    border: 10px solid $dark-pink;
+  }
+}
     p {
       font-size: 2.25rem;
     }
@@ -411,7 +414,8 @@ body {
         border: 5px solid black;
         padding: 1rem;
         background-color: $light-pink;
-        color: $light-pink;
+        color: $dark-pink;
+        font-size: 1.25rem;
       }
     }
   }

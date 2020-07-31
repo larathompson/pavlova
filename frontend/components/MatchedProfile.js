@@ -32,7 +32,9 @@ function MatchedProfile(props) {
       <h1>Its a Match!</h1>
       <article>
         <h2>{matchedUser.first_name}</h2>
-        <img src={matchedUser.image_1} />
+        <div id="img-background">
+          <img src={matchedUser.image_1} />
+        </div>
         <h3>{getAge(new Date(matchedUser.dob))} years old</h3>
         <p>{matchedUser.bio}</p>
       </article>
