@@ -146,7 +146,7 @@ export const Users = () => {
             <h3>{"Try widening your search preferences!"}</h3>
           </section> :
           <section id="swipe">
-            <h2>Swipe away!</h2>
+            <h2>Find some matches!</h2>
             {/* <TinderCard onSwipe={onSwipe} preventSwipe={['up', 'down']} flickOnSwipe={true}> */}
             <article className="user-tile">
               <Link to={`/user/${usersData[activeUser]?.id}`}>

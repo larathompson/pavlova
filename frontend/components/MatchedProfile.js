@@ -29,7 +29,7 @@ function MatchedProfile(props) {
       <Navbar />
     </div>
     <section id="users">
-      <h1>Its a Match!</h1>
+      <h1>Pavlova</h1>
       <article>
         <h2>{matchedUser.first_name}</h2>
         <div id="img-background">
