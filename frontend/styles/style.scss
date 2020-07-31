@@ -169,6 +169,7 @@ body {
   h4 {
     color: $dark-pink;
     text-decoration: underline;
+    font-size: 20px;
   }
 }
 
@@ -377,6 +378,7 @@ body {
     }
 #img-background {
   background-color: $dark-pink;
+  border-radius: 20px;
   img {
     max-width: 40rem;
     border-radius: 20px;
