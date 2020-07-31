@@ -39,6 +39,7 @@
     "react-fade-in": "^1.1.0",
     "react-hook-form": "^6.1.0",
     "react-router-dom": "^5.2.0",
+    "react-tinder-card": "^1.2.0",
     "yup": "^0.29.2"
   }
 }
