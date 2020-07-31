@@ -46,13 +46,13 @@ export const Preferences = () => {
       <section id="preferences">
 
         <FadeIn>
-          <div id="user-pref">
-            <Link to="images">Upload your profile pic!</Link>
-          </div>
           <form onSubmit={handleSubmit(onSubmit)}>
 
-            <label htmlFor="bio">Enter your last name</label><br></br>
-            <input id="bio" type="text" name="bio" autoComplete="off" placeholder="Edit your bio" ref={register} />
+            <Link to="images"><button>Upload a profile pic!</button></Link>
+            <div id="bio-box">
+              <label htmlFor="bio">Enter your last name</label><br></br>
+              <textarea id="bio" type="text" name="bio" autoComplete="off" placeholder="Edit your bio" ref={register}></textarea>
+            </div>
 
             <label htmlFor="age_pref_min">Enter your minimum age preference</label><br></br>
             <input id="age_pref_min" type="number" name="age_pref_min" autoComplete="off" placeholder="18" ref={register} />

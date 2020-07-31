@@ -16,7 +16,7 @@ function NavBar() {
   return <nav id="navbar" role="navigation" aria-label="main">
     <Link to="/pavlova"><img className="logo" src={logo} alt="loading" /></Link>
     <ul>
-      <li className="nav-btn"><Link to="/pavlova">Swipe for matches</Link></li>
+      <li className="nav-btn"><Link to="/pavlova">Swipe</Link></li>
       <li className="nav-btn"><Link to="/preferences">Edit Profile</Link></li>
       <li className="nav-btn"><Link to="/matches">My Matches</Link></li>
       <li className="nav-btn" onClick={handleLogout}><Link to="/">Logout</Link></li>

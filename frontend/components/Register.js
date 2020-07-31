@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers'
 import * as Yup from 'yup'
@@ -58,57 +58,61 @@ export const Register = () => {
 
   return (
     <section id="register">
-      {/* <FadeIn delay="200"> */}
-      <h1>Welcome to Pavlova</h1>
-      <img src={splashLogo} />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <FadeIn delay="200">
+        <h1>Welcome to Pavlova</h1>
+        {/* <img src={splashLogo} /> */}
+        <form onSubmit={handleSubmit(onSubmit)}>
 
-        <label htmlFor="email">Enter your email address</label><br></br>
-        <input id="email" type="email" name="email" autoComplete="off" placeholder="Email address" ref={register} />
-        <p>{errors.email?.message}</p>
+          <label htmlFor="email">Enter your email address</label><br></br>
+          <input id="email" type="email" name="email" autoComplete="off" placeholder="Email address" ref={register} />
+          <p>{errors.email?.message}</p>
 
-        <label htmlFor="first_name">Enter your first name</label><br></br>
-        <input id="first_name" type="text" name="first_name" autoComplete="off" placeholder="First name" ref={register} />
-        <p>{errors.first_name?.message}</p>
+          <label htmlFor="first_name">Enter your first name</label><br></br>
+          <input id="first_name" type="text" name="first_name" autoComplete="off" placeholder="First name" ref={register} />
+          <p>{errors.first_name?.message}</p>
 
-        <label htmlFor="last_name">Enter your last name</label><br></br>
-        <input id="last_name" type="text" name="last_name" autoComplete="off" placeholder="Last name" ref={register} />
-        <p>{errors.last_name?.message}</p>
+          <label htmlFor="last_name">Enter your last name</label><br></br>
+          <input id="last_name" type="text" name="last_name" autoComplete="off" placeholder="Last name" ref={register} />
+          <p>{errors.last_name?.message}</p>
 
-        <label htmlFor="gender">Select your gender</label><br></br>
-        <select name="gender" ref={register}>
-          {/* <option value="" disabled selected hidden>Select gender</option> */}
-          <option value="" disabled defaultValue hidden>Select gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-        <p>{errors.gender?.message}</p>
+          <label htmlFor="gender">Select your gender</label><br></br>
+          <select name="gender" ref={register}>
+            {/* <option value="" disabled selected hidden>Select gender</option> */}
+            <option value="" selected="true" disabled="disabled">Your gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <p>{errors.gender?.message}</p>
 
-        <label htmlFor="gender_pref">What are you looking for?</label><br></br>
-        <select name="gender_pref" ref={register}>
-          <option value="male">Men</option>
-          <option value="female">Women</option>
-          <option value="both">Everyone</option>
-        </select>
-        <p>{errors.gender_pref?.message}</p>
+          <label htmlFor="gender_pref">What are you looking for?</label><br></br>
+          <select name="gender_pref" ref={register}>
+            <option value="" selected="true" disabled="disabled">Interested in?</option>
+            <option value="male">Men</option>
+            <option value="female">Women</option>
+            <option value="both">Everyone</option>
+          </select>
+          <p>{errors.gender_pref?.message}</p>
 
-        <label htmlFor="dob">Enter your date of birth</label><br></br>
-        <input id="dob" type="date" name="dob" ref={register} />
-        <p>{errors.dob?.message}</p>
+          <label htmlFor="dob">Enter your date of birth</label><br></br>
+          <input id="dob" type="date" name="dob" ref={register} />
+          <p>{errors.dob?.message}</p>
 
-        <label htmlFor="password">Choose a password</label><br></br>
-        <input id="password" type="password" name="password" autoComplete="off" placeholder="Password" ref={register} />
-        <p>{errors.password?.message}</p>
+          <label htmlFor="password">Choose a password</label><br></br>
+          <input id="password" type="password" name="password" autoComplete="off" placeholder="Password" ref={register} />
+          <p>{errors.password?.message}</p>
 
-        <label htmlFor="passswordConfirmation">Confirm your password</label><br></br>
-        <input id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm password" autoComplete="off" ref={register} />
-        <p>{errors.password_confirmation?.message}</p>
+          <label htmlFor="passswordConfirmation">Confirm your password</label><br></br>
+          <input id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm password" autoComplete="off" ref={register} />
+          <p>{errors.password_confirmation?.message}</p>
 
-        <button type="submit">Submit</button>
+          <button type="submit">➜</button>
+          <Link to="/login">
+            <h4>Already have an account? Sign in</h4>
+          </Link>
 
 
-      </form>
-      {/* </FadeIn> */}
+        </form>
+      </FadeIn>
     </section>
   )
 

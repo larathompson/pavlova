@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers'
 import * as Yup from 'yup'
@@ -30,7 +30,7 @@ export const Login = () => {
   const onSubmit = values => {
     axios.post('/api/login', values)
       .then(resp => {
-     
+
         login(resp.data.token)
         console.log(resp.data)
         history.push('/pavlova')
@@ -50,7 +50,7 @@ export const Login = () => {
   return (
     <section id="login">
       <FadeIn>
-        <h1>Sign In</h1>
+        <h1>Welcome Back</h1>
         <img src={splashLogo} />
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email">Enter email</label><br></br>
@@ -59,8 +59,12 @@ export const Login = () => {
           <label htmlFor="password">Enter your password</label><br></br>
           <input id="password" type="password" name="password" autoComplete="off" placeholder="Password" ref={register} />
           <p>{errors.password?.message}</p>
-          <button type="submit">Submit</button>
+          <button type="submit">➜</button>
+          <Link to="/register">
+            <h4>{"Don't have an account yet? Sign up!"}</h4>
+          </Link>
         </form>
+
       </FadeIn>
     </section>
   )
