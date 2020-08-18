@@ -38,10 +38,6 @@ function Images() {
     fetchPhotos('image', setImages)
   }, [])
 
-  // function handleImage(res) {
-  //   console.log('hello', res)
-
-  // }
 
   useEffect(() => {
     const token = localStorage.getItem('token')
