@@ -40,6 +40,11 @@ We had to:
 
 
 # Approach
+![homePage](login.png)
+![registerPage](register.png)
+![swipePage](swipe.png)
+![editPage](edit.png)
+![matchPage](matches.png)
 
 ## Planning 
 
@@ -207,6 +212,8 @@ Our app had the following components:
 
  ## Images
 
+ ![imagePage](image.png)
+
  In order for a user to upload images onto the profile, I used the Cloudinary library. 
 
  This meant I could create a pop-up widget which allowed the user to upload a picture which was then saved in state. Every time the user changed their image, this ran a useEffect which sent a PUT request and updated the users profile image. In the future, I would improve this feature by allowing the user to upload multiple images. This would require me to save the default state of the images as an array and later map over this array of images to display them on the page. 
@@ -224,6 +231,8 @@ Our app had the following components:
  ## Matches 
 
 To display all of the users matches, I made a GET request, saving the matches data in state. By mapping over this data, I was able to display the profiles of the matched users as well as informing the user how many matches they had. I used a terniary operator to give the user the option to keep swiping if they had no matches. 
+
+![matchesPage](matches.png)
 
 
 ## Challenges
