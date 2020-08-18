@@ -203,7 +203,7 @@ Our app had the following components:
           <Route exact path = '/user/:id' component={MatchedProfile} />
 ```
 
- In order to save time, we each worked on different components. My focus was work independently on the images (`/images`) and matches components (`/matches`) and I worked in a pair on the swiping components (`/pavlova`). 
+ In order to save time, we each worked on different components. My focus was work independently on the images (`/images`) and matches components (`/matches`) whilst working collaboratively on the other components. 
 
  ## Images
 
@@ -223,7 +223,36 @@ Our app had the following components:
 
  ## Matches 
 
- 
+To display all of the users matches, I made a GET request, saving the matches data in state. By mapping over this data, I was able to display the profiles of the matched users as well as informing the user how many matches they had. I used a terniary operator to give the user the option to keep swiping if they had no matches. 
+
+
+## Challenges
+
+- Time-constraints: when starting this project, we had only learnt Python for 1 week and therefore, as we were not very familiar with the framework, we had to spend a lot of time doing independent research whilst working towards meeting the deadline. Although we worked to resolve these, we were pushed for time and therefore, were not able to implement the location or chat features. 
+
+- Table relationships: we spent the first few days of our projects planning and designing our tables. However, after reflecting, we realised there was a more efficient way to design the tables and therefore, had to refactor our code. This used a lot of time and emphasised the importance of planning to me. 
+
+- Filtering users: we had to filter users based on the logged in users preferences which related to gender and age. Additionally, we realised we had to apply a 'seen' filter to ensure that once a user had swiped past another user, they did not show up again on their profile. This was not something that we had considered at the first and therefore, resulted in us changing our models mid-way through the project. 
+
+## Lessons Learnt
+
+- Planning: the complexity of the logic in this project emphasised the importance of planning to me. Despite using Figma and Google Docs to support the planning of our code and design, we still ran into problems as we did not consider the table relationships deeply enough. From this, I recognise that despite being keen and excited to start coding projects, ensuring that you have pre-planned all aspects in detail is essential and saves time in the long-run. 
+
+- Project-set up: compared to previous projects I have done, the code in this project was broken into smaller components and the layout was clear - this made it very easy to navigate through the code and made it clear for me to understand. 
+
+- Independent research: as mentioned, we had only done Python for 1 week prior to this project and therefore, we were required to do a lot of indepdendent research to understand how to implement different functionalities. This has improved my ability to read documentation and this is something that will help when completing projects into the future. 
+
+## Future Features 
+
+As mentioned, we were quite pushed for time and therefore did not implement all the features that we wanted. In the future, I would like to implement:
+
+- Chat: when users match, they would be able to instantly start a conversation with each other using web-sockets
+
+- Location preferences: you could set your location radius preferences so that you are only shown users within your desired distance
+
+- Multiple images: users could upload multiple images to their profiles. This could be done using Cloudinary. 
+
+
 
 
 
